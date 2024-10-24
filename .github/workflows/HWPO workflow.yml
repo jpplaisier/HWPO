@@ -38,12 +38,12 @@ jobs:
         .\"Get todays program.ps1" -BodyJson $bodyJson
       shell: pwsh
 
-    # Step 2: Upload the combinedData.json file as an artifact
+    # Step 2: Upload the program.json file as an artifact
     - name: Upload JSON artifact
       uses: actions/upload-artifact@v4
       with:
         name: training-data
-        path: _data/combinedData.json
+        path: pages/_data/program.json
         retention-days: 1
 
     # Step 3: Download the JSON artifact

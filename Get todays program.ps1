@@ -63,10 +63,10 @@ foreach ($section in $scheduleResponse.schedule.sections) {
     $sectionname = $section.title
     $detailApiUrl = "https://app.hwpo-training.com/mobile/api/v3/schedules/$scheduleId/sections/$sectionId"
 
-    Write-Host "sectionId = $sectionId"
-    Write-Host "scheduleId = $scheduleId"
-    Write-Host "sectionname = $sectionname"
-    Write-Host "detailApiUrl = $detailApiUrl"
+    #Write-Host "sectionId = $sectionId"
+    #Write-Host "scheduleId = $scheduleId"
+    #Write-Host "sectionname = $sectionname"
+    #Write-Host "detailApiUrl = $detailApiUrl"
     
     # Make the GET request for section details
     $sectionDetailResponse = Invoke-RestMethod -Uri $detailApiUrl -Method GET -Headers $headers
@@ -88,12 +88,12 @@ foreach ($section in $scheduleResponse.schedule.sections) {
 $combinedData = $combinedData | ConvertTo-Json -Depth 10
 
 # Ensure that the output directory exists (e.g., _data folder)
-$outputPath = Join-Path $workspace ".Pages\_data"
+$outputPath = Join-Path $workspace "Pages/_data"
 if (-Not (Test-Path $outputPath)) {
     New-Item -ItemType Directory -Force -Path $outputPath
 }
 
 # Export the combined data to JSON (Make sure to modify the path as needed)
-$combinedData | ConvertTo-Json -Depth 10 | Out-File -FilePath (Join-Path $outputPath "combinedData.json") -Encoding utf8
+$combinedData | ConvertTo-Json -Depth 10 | Out-File -FilePath (Join-Path $outputPath "program.json") -Encoding utf8
 
 Write-Host "Training data saved to combinedData.json at $outputPath"
