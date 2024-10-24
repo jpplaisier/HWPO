@@ -1,0 +1,33 @@
+{
+  "id": 200055,
+  "position": 11,
+  "kind": "section",
+  "plan_option_id": 2905,
+  "title": "zone 2",
+  "description": "<style>body{  font-family: 'Proxima Nova';  font-size: 14px;  color: #0D0D0D;  line-height: 24px;  letter-spacing: 0.38px;}p {  margin: 0;}.benchmark {  color: #AF986C;  font-weight: 600;}</style><body>40:00 Zone 2 Spin Bike, Run, or Stairmaster <br /><br />NOTES: <br />- Wear a heart rate monitor so that you can accurately gauge your zone 2 heart rate. <br />- If you opt for a bike erg and are using a PM5 monitor, use this link to set your monitor and track on ErgData: https://workout.ergdata.com/shared/pgofanqh</body>",
+  "type": "plain_text",
+  "completed": false,
+  "has_feedback": false,
+  "attachments": [
+    {
+      "id": 120,
+      "type": "video",
+      "title": "Bike Erg",
+      "content_type": "video/mp4",
+      "position": 0,
+      "video_id": null,
+      "video_subtitles": [],
+      "created_at": 1645627891,
+      "file_size": "8.83 MB",
+      "file_size_raw": 9262081,
+      "src": "https://cdn-app.hwpotraining.com/uploads/media/file/120/Bike_Erg.mp4",
+      "stream_src": "https://cdn-app.hwpotraining.com/uploads/media/file/120/video.m3u8",
+      "thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/120/thumb_video_Bike_Erg.jpg",
+      "medium_thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/120/thumb_video_Bike_Erg.jpg",
+      "is_remove": false
+    }
+  ],
+  "benchmarks": null,
+  "performance": null,
+  "score": null
+}

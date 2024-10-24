@@ -1,0 +1,15 @@
+{
+  "id": 200056,
+  "position": 12,
+  "kind": "section",
+  "plan_option_id": 2905,
+  "title": "swim",
+  "description": "<style>body{  font-family: 'Proxima Nova';  font-size: 14px;  color: #0D0D0D;  line-height: 24px;  letter-spacing: 0.38px;}p {  margin: 0;}.benchmark {  color: #AF986C;  font-weight: 600;}</style><body>Swim Intervals. <br />---------<br />WARM-UP:<br />2 Sets: <br />100 Free<br />50 Kick<br />--------<br />MAIN SET:<br />4x50m Free <br />:30 Rest<br />+<br />8x25m Kick <br />:15 Rest<br />+<br />200m Free, For Time.<br />1:00 Rest<br />--------<br />COOL DOWN: <br />100m Swim (Easy)</body>",
+  "type": "plain_text",
+  "completed": false,
+  "has_feedback": false,
+  "attachments": [],
+  "benchmarks": null,
+  "performance": null,
+  "score": null
+}
