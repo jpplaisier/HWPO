@@ -88,7 +88,7 @@ foreach ($section in $scheduleResponse.schedule.sections) {
 $combinedData = $combinedData | ConvertTo-Json -Depth 10
 
 # Ensure that the output directory exists (e.g., _data folder)
-$outputPath = Join-Path $workspace "Pages/_data"
+$outputPath = Join-Path $workspace "_data"
 if (-Not (Test-Path $outputPath)) {
     New-Item -ItemType Directory -Force -Path $outputPath
 }
