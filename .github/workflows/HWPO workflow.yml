@@ -1,0 +1,42 @@
+name: HWPO workflow
+
+on:
+  # Run the workflow daily at 06:00 UTC (convert Amsterdam time as needed)
+  schedule:
+    - cron: "0 6 * * *"
+
+  # Allow the workflow to be manually triggered
+  workflow_dispatch:
+
+jobs:
+  Get-HWPO-data-from-API:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Step 1: Run the PowerShell script to get the latest data
+    - name: Run PowerShell script
+      run: |
+        # Build the body using secrets from GitHub Actions
+        $body = @{
+            "email" = "${{ secrets.HWPO_EMAIL }}"
+            "client_secret" = "${{ secrets.HWPO_CLIENT_SECRET }}"
+            "password" = "${{ secrets.HWPO_PASSWORD }}"
+            "client_id" = "${{ secrets.HWPO_CLIENT_ID }}"
+        }
+
+        # Convert the body to JSON format
+        $bodyJson = $body | ConvertTo-Json -Depth 3
+
+        # Call your PowerShell script with the $bodyJson
+        .\"Get todays program.ps1" -BodyJson $bodyJson
+      shell: pwsh
+
+    # Step 2: Upload the combinedData.json file as an artifact
+    - name: Upload JSON artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: training-data
+        path: _data/combinedData.json
