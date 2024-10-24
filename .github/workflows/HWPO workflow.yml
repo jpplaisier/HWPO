@@ -43,7 +43,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: training-data
-        path: _data/program.json
+        path: index.html
         retention-days: 1
 
     # Step 3: Download the JSON artifact
