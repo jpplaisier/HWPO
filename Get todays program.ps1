@@ -96,4 +96,4 @@ if (-Not (Test-Path $outputPath)) {
 # Export the combined data to JSON (Make sure to modify the path as needed)
 $combinedData | ConvertTo-Json -Depth 10 | Out-File -FilePath (Join-Path $outputPath "program.json") -Encoding utf8
 
-Write-Host "Training data saved to combinedData.json at $outputPath"
+Write-Host "Training data saved to program.json at $outputPath"
