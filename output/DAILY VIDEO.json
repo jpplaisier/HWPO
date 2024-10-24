@@ -1,0 +1,33 @@
+{
+  "id": 200052,
+  "position": 8,
+  "kind": "tip",
+  "plan_option_id": 2905,
+  "title": "DAILY VIDEO",
+  "description": "<style>body{  font-family: 'Proxima Nova';  font-size: 14px;  color: #0D0D0D;  line-height: 24px;  letter-spacing: 0.38px;}p {  margin: 0;}.benchmark {  color: #AF986C;  font-weight: 600;}</style><body>For any training questions, be sure to post in the Flagship/60 2.0 channel in Circle!</body>",
+  "type": "plain_text",
+  "completed": false,
+  "has_feedback": false,
+  "attachments": [
+    {
+      "id": 406810,
+      "type": "video",
+      "title": "Flagship thursday october 24th ",
+      "content_type": "video/mp4",
+      "position": null,
+      "video_id": null,
+      "video_subtitles": [],
+      "created_at": 1729417297,
+      "file_size": "32.8 MB",
+      "file_size_raw": 34438902,
+      "src": "https://cdn-app.hwpotraining.com/uploads/media/file/406810/FLAGSHIP_THURSDAY_OCTOBER_24th_.MP4",
+      "stream_src": "https://cdn-app.hwpotraining.com/uploads/media/file/406810/video.m3u8",
+      "thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/406810/thumb_video_FLAGSHIP_THURSDAY_OCTOBER_24th_.jpg",
+      "medium_thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/406810/thumb_video_FLAGSHIP_THURSDAY_OCTOBER_24th_.jpg",
+      "is_remove": false
+    }
+  ],
+  "benchmarks": null,
+  "performance": null,
+  "score": null
+}
