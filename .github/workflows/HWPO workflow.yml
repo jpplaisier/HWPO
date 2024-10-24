@@ -12,9 +12,13 @@ jobs:
   Get-HWPO-data-from-API:
     runs-on: ubuntu-latest
 
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the changed files back to the repository.
+      contents: write
+
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     # Step 1: Run the PowerShell script to get the latest data
     - name: Run PowerShell script
@@ -40,3 +44,13 @@ jobs:
       with:
         name: training-data
         path: _data/combinedData.json
+        retention-days: 1
+
+    # Step 3: Download the JSON artifact
+    - name: Download JSON artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: training-data
+    
+    - name: Commit and push back to the GitHub repository
+      uses: stefanzweifel/git-auto-commit-action@v5
