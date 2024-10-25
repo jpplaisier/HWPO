@@ -1,0 +1,50 @@
+{
+  "id": 200064,
+  "position": 6,
+  "kind": "section",
+  "plan_option_id": 2906,
+  "title": "Accessory",
+  "description": "<style>body{  font-family: 'Proxima Nova';  font-size: 14px;  color: #0D0D0D;  line-height: 24px;  letter-spacing: 0.38px;}p {  margin: 0;}.benchmark {  color: #AF986C;  font-weight: 600;}</style><body>Single Arm Dumbbell Strict Press <br />3x8/8 @ RPE 7 <br />Rest :30 Between Arms. <br />Rest 1:30 Between Sets. <br />----<br />Tate Press <br />3x20 @ RPE 6 <br />Rest :30 Between Sets. <br /><br />NOTES: <br />- Use a light weight and aim to get a pump!</body>",
+  "type": "plain_text",
+  "completed": false,
+  "has_feedback": false,
+  "attachments": [
+    {
+      "id": 364,
+      "type": "video",
+      "title": "Tate Press",
+      "content_type": "video/mp4",
+      "position": 1,
+      "video_id": null,
+      "video_subtitles": [],
+      "created_at": 1645629790,
+      "file_size": "14.7 MB",
+      "file_size_raw": 15454547,
+      "src": "https://cdn-app.hwpotraining.com/uploads/media/file/364/Tate_Press.mp4",
+      "stream_src": "https://cdn-app.hwpotraining.com/uploads/media/file/364/video.m3u8",
+      "thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/364/thumb_video_Tate_Press.jpg",
+      "medium_thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/364/thumb_video_Tate_Press.jpg",
+      "is_remove": false
+    },
+    {
+      "id": 305,
+      "type": "video",
+      "title": "Seated Single Arm Dumbbell Strict Press",
+      "content_type": "video/mp4",
+      "position": 0,
+      "video_id": null,
+      "video_subtitles": [],
+      "created_at": 1645629397,
+      "file_size": "11.7 MB",
+      "file_size_raw": 12228428,
+      "src": "https://cdn-app.hwpotraining.com/uploads/media/file/305/Seated_Single_Arm_Dumbbell_Strict_Press.mp4",
+      "stream_src": "https://cdn-app.hwpotraining.com/uploads/media/file/305/video.m3u8",
+      "thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/305/thumb_video_Seated_Single_Arm_Dumbbell_Strict_Press.jpg",
+      "medium_thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/305/thumb_video_Seated_Single_Arm_Dumbbell_Strict_Press.jpg",
+      "is_remove": false
+    }
+  ],
+  "benchmarks": null,
+  "performance": null,
+  "score": null
+}
