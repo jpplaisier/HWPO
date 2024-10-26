@@ -1,7 +1,7 @@
 {
   "schedule": {
-    "id": 14717840,
-    "day_id": 98526,
+    "id": 14718644,
+    "day_id": 98528,
     "plan": {
       "id": 3216,
       "title": "FLAGSHIP 2.0",
@@ -20,14 +20,14 @@
       ],
       "cover_url": "https://cdn-app.hwpotraining.com/uploads/plan/file/3216/V2mFUM6P4CJMEPOFWsgcRg.png"
     },
-    "date": 1729814400,
+    "date": 1729900800,
     "day_number": null,
     "color": "#db2b44",
     "can_navigate_forward": true,
     "can_navigate_back": true,
     "sections": [
       {
-        "id": 200058,
+        "id": 200075,
         "title": "DAILY VIDEO",
         "type": "plain_text",
         "kind": "tip",
@@ -37,27 +37,27 @@
         "completed": false,
         "has_feedback": false,
         "attachment_for_tip": {
-          "id": 406813,
+          "id": 406812,
           "type": "video",
-          "title": "Flagship friday october 25th ",
+          "title": "Flagship saturday october 26th",
           "content_type": "video/mp4",
           "position": 0,
           "video_id": null,
           "video_subtitles": [],
-          "created_at": 1729417418,
-          "file_size": "90.4 MB",
-          "file_size_raw": 94820547,
-          "src": "https://cdn-app.hwpotraining.com/uploads/media/file/406813/FLAGSHIP_FRIDAY_OCTOBER_25th_.MP4",
-          "stream_src": "https://cdn-app.hwpotraining.com/uploads/media/file/406813/video.m3u8",
-          "thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/406813/thumb_video_FLAGSHIP_FRIDAY_OCTOBER_25th_.jpg",
-          "medium_thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/406813/thumb_video_FLAGSHIP_FRIDAY_OCTOBER_25th_.jpg",
+          "created_at": 1729417399,
+          "file_size": "59.1 MB",
+          "file_size_raw": 61962239,
+          "src": "https://cdn-app.hwpotraining.com/uploads/media/file/406812/FLAGSHIP_SATURDAY_OCTOBER_26th.MP4",
+          "stream_src": "https://cdn-app.hwpotraining.com/uploads/media/file/406812/video.m3u8",
+          "thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/406812/thumb_video_FLAGSHIP_SATURDAY_OCTOBER_26th.jpg",
+          "medium_thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/406812/thumb_video_FLAGSHIP_SATURDAY_OCTOBER_26th.jpg",
           "is_remove": false
         },
         "pre_wod": null,
         "post_wod": null
       },
       {
-        "id": 200059,
+        "id": 200076,
         "title": null,
         "type": "plain_text",
         "kind": "pre_wod",
@@ -67,17 +67,17 @@
         "completed": false,
         "has_feedback": false,
         "attachment_for_tip": null,
-        "pre_wod": "https://deeplink.gowod.app?progId=hwpo-flagship-2.0&date=2024-10-25&type=prewod&callback=hwpo://schedule?id=14717840&date=2024-10-25&type=prewod",
+        "pre_wod": "https://deeplink.gowod.app?progId=hwpo-flagship-2.0&date=2024-10-26&type=prewod&callback=hwpo://schedule?id=14718644&date=2024-10-26&type=prewod",
         "post_wod": null
       },
       {
-        "id": 200060,
+        "id": 200077,
         "title": "warmup",
         "type": "plain_text",
         "kind": "section",
         "position": 3,
         "plan_option_id": 2906,
-        "description": "<style>body{  font-family: 'Proxima Nova';  font-size: 14px;  color: #0D0D0D;  line-height: 24px;  letter-spacing: 0.38px;}p {  margin: 0;}.benchmark {  color: #AF986C;  font-weight: 600;}</style><body>3x <br />15/12 Cal Row <br />10/10 Pec Stretch on Rig <br />10/10 Trap Stretch On the Rig<br />20 Banded Face Pull</body>",
+        "description": "<style>body{  font-family: 'Proxima Nova';  font-size: 14px;  color: #0D0D0D;  line-height: 24px;  letter-spacing: 0.38px;}p {  margin: 0;}.benchmark {  color: #AF986C;  font-weight: 600;}</style><body>3:00 Spin Bike <br />+<br />3x <br />10/10 Single Leg Kettlebell Romanian Deadlift <br />10 Overhead Squat (w/ Empty Barbell)<br />:30 Hollow Hold </body>",
         "completed": false,
         "has_feedback": false,
         "attachment_for_tip": null,
@@ -85,13 +85,13 @@
         "post_wod": null
       },
       {
-        "id": 200062,
+        "id": 200079,
         "title": "Strength",
         "type": "plain_text",
         "kind": "section",
         "position": 4,
         "plan_option_id": 2906,
-        "description": "<style>body{  font-family: 'Proxima Nova';  font-size: 14px;  color: #0D0D0D;  line-height: 24px;  letter-spacing: 0.38px;}p {  margin: 0;}.benchmark {  color: #AF986C;  font-weight: 600;}</style><body>Dumbbell Bench <br /><br />3 Sets: <br />:30 Max Reps Bench ** // RPE 7 <br />Rest 1:30 Between Sets. <br /><br />NOTES: <br />- Perform these with a @ 2020 tempo (i.e. :02 down, no pause at the bottom, :02 up, no pause at the top). Don't game the :30, perform controlled reps for the entire thirty seconds. <br />- Use a load that feels like an RPE 7.<br />------------<br />OPTION A. <br /><br />Strict Pull-Up<br /><br />3 Sets of Max Reps (Cap @ 12 Reps) <br />Rest 2:00 Between Sets. <br /><br />NOTES: <br />- This option is for those that either have strict pull-ups but are not ready to load them, or people who do not have strict pull-ups and will need to use a band.<br />- Use a band if you will get less than five reps on any given set.<br />- Leave one rep in the tank on each set. <br />- If you are using bands, use as few bands as possible, and aim for at least 8 reps. <br />----<br />OPTION B. <br /><br />Weighted Strict Pull-Up <br /><br />6 Sets: <br />2 Reps @ RPE 7 <br />Rest 1:30 Between Sets. <br /><br />NOTES:<br />- Use a load that is challenging but allows you to perform two explosive reps. </body>",
+        "description": "<style>body{  font-family: 'Proxima Nova';  font-size: 14px;  color: #0D0D0D;  line-height: 24px;  letter-spacing: 0.38px;}p {  margin: 0;}.benchmark {  color: #AF986C;  font-weight: 600;}</style><body>Power Snatch<br />1x3 @ <span class='benchmark' data-id='254'>60kg</span> <br />1x2 @ <span class='benchmark' data-id='254'>65kg</span>  <br />1x1 @ <span class='benchmark' data-id='254'>70kg</span>  <br />1x3 @ <span class='benchmark' data-id='254'>65kg</span> <br />1x2 @ <span class='benchmark' data-id='254'>70kg</span> <br />1x1 @ <span class='benchmark' data-id='254'>72.5kg</span> <br /><br />Rest 1:00 Between Sets. <br /><br />NOTES: <br />- These are not touch-and-go sets. The weight should feel light and snappy today. But, that does not mean that you should be trying to throw the bar around. Use your normal technique and focus on making each rep perfect. <br />- Aim for all sets to be at an RPE 6-7 today.<br />----<br />Front Squat <br />3x3 @ <span class='benchmark' data-id='53'>65kg</span> // RPE 6<br /><br />Rest 1-2 Minutes Between Sets. <br /><br />NOTES: <br />- Focus on solid positions. Don't rush these sets just because the weight feels light. </body>",
         "completed": false,
         "has_feedback": false,
         "attachment_for_tip": null,
@@ -99,13 +99,13 @@
         "post_wod": null
       },
       {
-        "id": 200063,
+        "id": 200080,
         "title": "metcon",
         "type": "plain_text",
         "kind": "section",
         "position": 5,
         "plan_option_id": 2906,
-        "description": "<style>body{  font-family: 'Proxima Nova';  font-size: 14px;  color: #0D0D0D;  line-height: 24px;  letter-spacing: 0.38px;}p {  margin: 0;}.benchmark {  color: #AF986C;  font-weight: 600;}</style><body>2 Sets...<br />----<br />4:00 Max Distance Row <br />+<br />Rest 2:00<br />+<br />AMRAP 4<br />7 Power Snatch @ 95/65lb <br />7 Bar Facing Burpees <br />----<br />*Rest 1:00 Between Sets. <br /><br />NOTES: <br />- You will complete two sets of each piece. Aim to beat your score on the second time through. <br />- Aim for a weight you can do quick singles with on the power snatch.</body>",
+        "description": "<style>body{  font-family: 'Proxima Nova';  font-size: 14px;  color: #0D0D0D;  line-height: 24px;  letter-spacing: 0.38px;}p {  margin: 0;}.benchmark {  color: #AF986C;  font-weight: 600;}</style><body>EMOM 28<br />1: 15/12 Cal Row<br />2: 15/12 Cal Ski <br />3: 15/12 Cal Fan Bike <br />4: Rest <br /><br />NOTES: <br />- None of these minutes should take longer than :45 to complete, so scale accordingly. <br />- Choose an amount of calories that feels like an RPE 7. This is a deload week, so the EMOM should feel fairly manageable. <br />- If you have the time and desire to do so, feel free to take this EMOM up to 40:00. Only do this if you know you will recover fine from this increased time.</body>",
         "completed": false,
         "has_feedback": false,
         "attachment_for_tip": null,
@@ -113,13 +113,13 @@
         "post_wod": null
       },
       {
-        "id": 200064,
-        "title": "Accessory",
+        "id": 200081,
+        "title": "accessory",
         "type": "plain_text",
         "kind": "section",
         "position": 6,
         "plan_option_id": 2906,
-        "description": "<style>body{  font-family: 'Proxima Nova';  font-size: 14px;  color: #0D0D0D;  line-height: 24px;  letter-spacing: 0.38px;}p {  margin: 0;}.benchmark {  color: #AF986C;  font-weight: 600;}</style><body>Single Arm Dumbbell Strict Press <br />3x8/8 @ RPE 7 <br />Rest :30 Between Arms. <br />Rest 1:30 Between Sets. <br />----<br />Tate Press <br />3x20 @ RPE 6 <br />Rest :30 Between Sets. <br /><br />NOTES: <br />- Use a light weight and aim to get a pump!</body>",
+        "description": "<style>body{  font-family: 'Proxima Nova';  font-size: 14px;  color: #0D0D0D;  line-height: 24px;  letter-spacing: 0.38px;}p {  margin: 0;}.benchmark {  color: #AF986C;  font-weight: 600;}</style><body>Single Arm Rope Row<br />3x5/5<br />Rest 1:00 Between Sets. <br />----<br />Barbell Curl <br />2x(15-25)<br />Rest 1:00 Between Sets. </body>",
         "completed": false,
         "has_feedback": false,
         "attachment_for_tip": null,
@@ -127,13 +127,13 @@
         "post_wod": null
       },
       {
-        "id": 200065,
-        "title": "bonus",
+        "id": 200082,
+        "title": "Bonus",
         "type": "plain_text",
         "kind": "section",
         "position": 7,
         "plan_option_id": 2906,
-        "description": "<style>body{  font-family: 'Proxima Nova';  font-size: 14px;  color: #0D0D0D;  line-height: 24px;  letter-spacing: 0.38px;}p {  margin: 0;}.benchmark {  color: #AF986C;  font-weight: 600;}</style><body>Fan Bike Intervals. <br />---------<br />5 Sets:<br />1:00 @ Hard Pace // RPE 8 <br />1:00 @ Easy, Recovery Pace // RPE 5 <br /><br />No Rest Between Sets.<br /><br />NOTES: <br />- Today's workout is part of a deload week, so stay very sustainable on the paces today. </body>",
+        "description": "<style>body{  font-family: 'Proxima Nova';  font-size: 14px;  color: #0D0D0D;  line-height: 24px;  letter-spacing: 0.38px;}p {  margin: 0;}.benchmark {  color: #AF986C;  font-weight: 600;}</style><body>Running Intervals. <br />------<br />WARM-UP: <br />5:00 Run @ Warm-Up Pace<br />+<br />Rest as needed.<br />-------<br />MAIN SET:<br /><br />4 Sets: <br />1000m @ RPE 7 <br />Rest 3:00 Between Sets. <br /><br />NOTES:<br />- Aim to hold a moderate pace on each set. This workout should feel very manageable. </body>",
         "completed": false,
         "has_feedback": false,
         "attachment_for_tip": null,
@@ -141,7 +141,7 @@
         "post_wod": null
       },
       {
-        "id": 200066,
+        "id": 200083,
         "title": null,
         "type": "plain_text",
         "kind": "post_wod",
@@ -152,10 +152,10 @@
         "has_feedback": false,
         "attachment_for_tip": null,
         "pre_wod": null,
-        "post_wod": "https://deeplink.gowod.app?progId=hwpo-flagship-2.0&date=2024-10-25&type=postwod&callback=hwpo://schedule?id=14717840&date=2024-10-25&type=postwod"
+        "post_wod": "https://deeplink.gowod.app?progId=hwpo-flagship-2.0&date=2024-10-26&type=postwod&callback=hwpo://schedule?id=14718644&date=2024-10-26&type=postwod"
       },
       {
-        "id": 200067,
+        "id": 200084,
         "title": "DAILY VIDEO",
         "type": "plain_text",
         "kind": "tip",
@@ -165,27 +165,27 @@
         "completed": false,
         "has_feedback": false,
         "attachment_for_tip": {
-          "id": 406813,
+          "id": 406812,
           "type": "video",
-          "title": "Flagship friday october 25th ",
+          "title": "Flagship saturday october 26th",
           "content_type": "video/mp4",
           "position": 0,
           "video_id": null,
           "video_subtitles": [],
-          "created_at": 1729417418,
-          "file_size": "90.4 MB",
-          "file_size_raw": 94820547,
-          "src": "https://cdn-app.hwpotraining.com/uploads/media/file/406813/FLAGSHIP_FRIDAY_OCTOBER_25th_.MP4",
-          "stream_src": "https://cdn-app.hwpotraining.com/uploads/media/file/406813/video.m3u8",
-          "thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/406813/thumb_video_FLAGSHIP_FRIDAY_OCTOBER_25th_.jpg",
-          "medium_thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/406813/thumb_video_FLAGSHIP_FRIDAY_OCTOBER_25th_.jpg",
+          "created_at": 1729417399,
+          "file_size": "59.1 MB",
+          "file_size_raw": 61962239,
+          "src": "https://cdn-app.hwpotraining.com/uploads/media/file/406812/FLAGSHIP_SATURDAY_OCTOBER_26th.MP4",
+          "stream_src": "https://cdn-app.hwpotraining.com/uploads/media/file/406812/video.m3u8",
+          "thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/406812/thumb_video_FLAGSHIP_SATURDAY_OCTOBER_26th.jpg",
+          "medium_thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/406812/thumb_video_FLAGSHIP_SATURDAY_OCTOBER_26th.jpg",
           "is_remove": false
         },
         "pre_wod": null,
         "post_wod": null
       },
       {
-        "id": 200068,
+        "id": 200085,
         "title": null,
         "type": "plain_text",
         "kind": "pre_wod",
@@ -195,17 +195,17 @@
         "completed": false,
         "has_feedback": false,
         "attachment_for_tip": null,
-        "pre_wod": "https://deeplink.gowod.app?progId=hwpo-flagship-2.0&date=2024-10-25&type=prewod&callback=hwpo://schedule?id=14717840&date=2024-10-25&type=prewod",
+        "pre_wod": "https://deeplink.gowod.app?progId=hwpo-flagship-2.0&date=2024-10-26&type=prewod&callback=hwpo://schedule?id=14718644&date=2024-10-26&type=prewod",
         "post_wod": null
       },
       {
-        "id": 200069,
+        "id": 200086,
         "title": "warmup",
         "type": "plain_text",
         "kind": "section",
         "position": 11,
         "plan_option_id": 2905,
-        "description": "<style>body{  font-family: 'Proxima Nova';  font-size: 14px;  color: #0D0D0D;  line-height: 24px;  letter-spacing: 0.38px;}p {  margin: 0;}.benchmark {  color: #AF986C;  font-weight: 600;}</style><body>EMOM 8 <br />1: 15/12 Cal Row <br />2: 10/10 Pec Stretch on Rig <br />3: 15/12 Cal Row <br />4: 15 Banded Face Pulls</body>",
+        "description": "<style>body{  font-family: 'Proxima Nova';  font-size: 14px;  color: #0D0D0D;  line-height: 24px;  letter-spacing: 0.38px;}p {  margin: 0;}.benchmark {  color: #AF986C;  font-weight: 600;}</style><body>EMOM 8<br />1: 15/12 Cal Spin Bike <br />2: 15/12 Cal Spin Bike <br />3: 8/8 Single Leg Kettlebell Romanian Deadlift  <br />4: 10 Overhead Squat (w/ Empty Barbell)</body>",
         "completed": false,
         "has_feedback": false,
         "attachment_for_tip": null,
@@ -213,13 +213,13 @@
         "post_wod": null
       },
       {
-        "id": 200070,
+        "id": 200087,
         "title": "Strength",
         "type": "plain_text",
         "kind": "section",
         "position": 12,
         "plan_option_id": 2905,
-        "description": "<style>body{  font-family: 'Proxima Nova';  font-size: 14px;  color: #0D0D0D;  line-height: 24px;  letter-spacing: 0.38px;}p {  margin: 0;}.benchmark {  color: #AF986C;  font-weight: 600;}</style><body>Every 2:00 x 6:00... (3 Sets) <br />:30 Max Rep Dumbbell Bench ** // RPE 7 <br /><br />NOTES: <br />- Perform these with a @ 2020 tempo (i.e. :02 down, no pause at the bottom, :02 up, no pause at the top). Don't game the :30, perform controlled reps for the entire thirty seconds. <br />- Use a load that feels like an RPE 7.<br />------------<br />OPTION A. <br /><br />Strict Pull-Up<br /><br />3 Sets of Max Reps (Cap @ 12 Reps) <br />Rest 2:00 Between Sets. <br /><br />NOTES: <br />- This option if for those that either have strict pull-ups but are not ready to load them, or people who do not have strict pull-ups and will need to use a band.<br />- Use a band if you will get lass than five reps on any given set.<br />- Leave one rep in the tank on each set. <br />- If you are using bands, use as few bands as possible, and aim for at least 8 reps. <br />----<br />OPTION B. <br /><br />Weighted Strict Pull-Up <br /><br />6 Sets: <br />2 Reps @ RPE 7 <br />Rest 1:30 Between Sets. <br /><br />NOTES:<br />- Use a load that is challenging but allows you to perform two explosive reps. </body>",
+        "description": "<style>body{  font-family: 'Proxima Nova';  font-size: 14px;  color: #0D0D0D;  line-height: 24px;  letter-spacing: 0.38px;}p {  margin: 0;}.benchmark {  color: #AF986C;  font-weight: 600;}</style><body>Every 2:00 x 12:00... (6 Sets) <br />Power Snatch<br />1x3 @ <span class='benchmark' data-id='254'>60kg</span> <br />1x2 @ <span class='benchmark' data-id='254'>65kg</span>  <br />1x1 @ <span class='benchmark' data-id='254'>70kg</span>  <br />1x3 @ <span class='benchmark' data-id='254'>65kg</span> <br />1x2 @ <span class='benchmark' data-id='254'>70kg</span> <br />1x1 @ <span class='benchmark' data-id='254'>72.5kg</span> <br /><br />NOTES: <br />- These are not touch-and-go sets. The weight should feel light and snappy today. But, that does not mean that you should be trying to throw the bar around. Use your normal technique and focus on making each rep perfect. <br />- Aim for all sets to be at an RPE 6-7 today.<br />----<br />Every 1:30 x 4:30... (3 Sets) <br />Front Squat <br />3x3 @ <span class='benchmark' data-id='53'>65kg</span> // RPE 6<br /><br />NOTES: <br />- Focus on solid positions. Don't rush these sets just because the weight feels light. </body>",
         "completed": false,
         "has_feedback": false,
         "attachment_for_tip": null,
@@ -227,13 +227,13 @@
         "post_wod": null
       },
       {
-        "id": 200071,
+        "id": 200088,
         "title": "metcon",
         "type": "plain_text",
         "kind": "section",
         "position": 13,
         "plan_option_id": 2905,
-        "description": "<style>body{  font-family: 'Proxima Nova';  font-size: 14px;  color: #0D0D0D;  line-height: 24px;  letter-spacing: 0.38px;}p {  margin: 0;}.benchmark {  color: #AF986C;  font-weight: 600;}</style><body>2 Sets...<br />----<br />4:00 Max Distance Row <br />+<br />Rest 2:00<br />+<br />AMRAP 4<br />7 Power Snatch @ 95/65lb <br />7 Bar Facing Burpees <br />----<br />*Rest 1:00 Between Sets. <br /><br />NOTES: <br />- You will complete two sets of each piece. Aim to beat your score on the second time through. <br />- Aim for a weight you can do quick singles with on the power snatch.</body>",
+        "description": "<style>body{  font-family: 'Proxima Nova';  font-size: 14px;  color: #0D0D0D;  line-height: 24px;  letter-spacing: 0.38px;}p {  margin: 0;}.benchmark {  color: #AF986C;  font-weight: 600;}</style><body>EMOM 20<br />1: 15/12 Cal Row<br />2: 15/12 Cal Ski <br />3: 15/12 Cal Fan Bike <br />4: Rest <br /><br />NOTES: <br />- None of these minutes should take longer than :45 to complete, so scale accordingly. <br />- Choose an amount of calories that feels like an RPE 7. This is a deload week, so the EMOM should feel fairly manageable. <br />- If you have the time and desire to do so, feel free to take this EMOM up to 40:00. Only do this if you know you will recover fine from this increased time.</body>",
         "completed": false,
         "has_feedback": false,
         "attachment_for_tip": null,
@@ -241,7 +241,7 @@
         "post_wod": null
       },
       {
-        "id": 200072,
+        "id": 200089,
         "title": null,
         "type": "plain_text",
         "kind": "post_wod",
@@ -252,7 +252,7 @@
         "has_feedback": false,
         "attachment_for_tip": null,
         "pre_wod": null,
-        "post_wod": "https://deeplink.gowod.app?progId=hwpo-flagship-2.0&date=2024-10-25&type=postwod&callback=hwpo://schedule?id=14717840&date=2024-10-25&type=postwod"
+        "post_wod": "https://deeplink.gowod.app?progId=hwpo-flagship-2.0&date=2024-10-26&type=postwod&callback=hwpo://schedule?id=14718644&date=2024-10-26&type=postwod"
       }
     ]
   }

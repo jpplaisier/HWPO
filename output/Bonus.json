@@ -1,0 +1,15 @@
+{
+  "id": 200082,
+  "position": 7,
+  "kind": "section",
+  "plan_option_id": 2906,
+  "title": "Bonus",
+  "description": "<style>body{  font-family: 'Proxima Nova';  font-size: 14px;  color: #0D0D0D;  line-height: 24px;  letter-spacing: 0.38px;}p {  margin: 0;}.benchmark {  color: #AF986C;  font-weight: 600;}</style><body>Running Intervals. <br />------<br />WARM-UP: <br />5:00 Run @ Warm-Up Pace<br />+<br />Rest as needed.<br />-------<br />MAIN SET:<br /><br />4 Sets: <br />1000m @ RPE 7 <br />Rest 3:00 Between Sets. <br /><br />NOTES:<br />- Aim to hold a moderate pace on each set. This workout should feel very manageable. </body>",
+  "type": "plain_text",
+  "completed": false,
+  "has_feedback": false,
+  "attachments": [],
+  "benchmarks": null,
+  "performance": null,
+  "score": null
+}

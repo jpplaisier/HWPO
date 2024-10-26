@@ -1,5 +1,5 @@
 {
-  "id": 200067,
+  "id": 200084,
   "position": 9,
   "kind": "tip",
   "plan_option_id": 2905,
@@ -10,20 +10,20 @@
   "has_feedback": false,
   "attachments": [
     {
-      "id": 406813,
+      "id": 406812,
       "type": "video",
-      "title": "Flagship friday october 25th ",
+      "title": "Flagship saturday october 26th",
       "content_type": "video/mp4",
       "position": 0,
       "video_id": null,
       "video_subtitles": [],
-      "created_at": 1729417418,
-      "file_size": "90.4 MB",
-      "file_size_raw": 94820547,
-      "src": "https://cdn-app.hwpotraining.com/uploads/media/file/406813/FLAGSHIP_FRIDAY_OCTOBER_25th_.MP4",
-      "stream_src": "https://cdn-app.hwpotraining.com/uploads/media/file/406813/video.m3u8",
-      "thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/406813/thumb_video_FLAGSHIP_FRIDAY_OCTOBER_25th_.jpg",
-      "medium_thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/406813/thumb_video_FLAGSHIP_FRIDAY_OCTOBER_25th_.jpg",
+      "created_at": 1729417399,
+      "file_size": "59.1 MB",
+      "file_size_raw": 61962239,
+      "src": "https://cdn-app.hwpotraining.com/uploads/media/file/406812/FLAGSHIP_SATURDAY_OCTOBER_26th.MP4",
+      "stream_src": "https://cdn-app.hwpotraining.com/uploads/media/file/406812/video.m3u8",
+      "thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/406812/thumb_video_FLAGSHIP_SATURDAY_OCTOBER_26th.jpg",
+      "medium_thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/406812/thumb_video_FLAGSHIP_SATURDAY_OCTOBER_26th.jpg",
       "is_remove": false
     }
   ],

@@ -1,0 +1,50 @@
+{
+  "id": 200081,
+  "position": 6,
+  "kind": "section",
+  "plan_option_id": 2906,
+  "title": "accessory",
+  "description": "<style>body{  font-family: 'Proxima Nova';  font-size: 14px;  color: #0D0D0D;  line-height: 24px;  letter-spacing: 0.38px;}p {  margin: 0;}.benchmark {  color: #AF986C;  font-weight: 600;}</style><body>Single Arm Rope Row<br />3x5/5<br />Rest 1:00 Between Sets. <br />----<br />Barbell Curl <br />2x(15-25)<br />Rest 1:00 Between Sets. </body>",
+  "type": "plain_text",
+  "completed": false,
+  "has_feedback": false,
+  "attachments": [
+    {
+      "id": 108111,
+      "type": "video",
+      "title": "Single arm rope rows",
+      "content_type": "video/mp4",
+      "position": 0,
+      "video_id": null,
+      "video_subtitles": [],
+      "created_at": 1691685318,
+      "file_size": "49.6 MB",
+      "file_size_raw": 51975317,
+      "src": "https://cdn-app.hwpotraining.com/uploads/media/file/108111/Single_Arm_Rope_Rows.mp4",
+      "stream_src": "https://cdn-app.hwpotraining.com/uploads/media/file/108111/video.m3u8",
+      "thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/108111/thumb_video_Single_Arm_Rope_Rows.jpg",
+      "medium_thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/108111/thumb_video_Single_Arm_Rope_Rows.jpg",
+      "is_remove": false
+    },
+    {
+      "id": 106,
+      "type": "video",
+      "title": "Barbell Curl",
+      "content_type": "video/mp4",
+      "position": 1,
+      "video_id": null,
+      "video_subtitles": [],
+      "created_at": 1645627834,
+      "file_size": "12 MB",
+      "file_size_raw": 12561802,
+      "src": "https://cdn-app.hwpotraining.com/uploads/media/file/106/Barbell_Curl.mp4",
+      "stream_src": "https://cdn-app.hwpotraining.com/uploads/media/file/106/video.m3u8",
+      "thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/106/thumb_video_Barbell_Curl.jpg",
+      "medium_thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/106/thumb_video_Barbell_Curl.jpg",
+      "is_remove": false
+    }
+  ],
+  "benchmarks": null,
+  "performance": null,
+  "score": null
+}
