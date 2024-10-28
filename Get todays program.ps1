@@ -98,7 +98,7 @@ $htmlContent = @"
             color: #fff;
             text-align: center;
             padding: 20px 0;
-            border-radius: 15px; /* Rounded corners for header and footer */
+            border-radius: 15px;
         }
         header img {
             max-width: 200px;
@@ -118,18 +118,18 @@ $htmlContent = @"
             color: #fff;
             margin: 10px 0;
             padding: 15px;
-            border-radius: 15px; /* Rounded corners for sections */
+            border-radius: 15px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
         .description {
             margin-top: 10px;
         }
         a {
-            color: #fff; /* White color for links */
-            text-decoration: none; /* Remove underline */
+            color: #fff;
+            text-decoration: none;
         }
         a:hover {
-            text-decoration: underline; /* Underline on hover */
+            text-decoration: underline;
         }
         img {
             display: block;
@@ -149,10 +149,26 @@ $htmlContent = @"
     </header>
     <main>
         $sectionsHtml
+        <!-- New Weight Converter Section -->
+        <div class="section">
+            <h2>Weight Converter</h2>
+            <p>Type a weight in pounds to convert it to kilograms:</p>
+            <input id="pounds" type="number" placeholder="Enter weight in lbs" oninput="convertWeight()" style="padding: 5px; width: 100%; border-radius: 5px;">
+            <p id="kilograms"></p>
+        </div>
     </main>
     <footer>
         <p>&copy; 2024 Open Gym Crew</p>
     </footer>
+
+    <script>
+        // JavaScript function to convert weight from lbs to kg
+        function convertWeight() {
+            let lbs = document.getElementById("pounds").value;
+            let kg = lbs / 2.20462;
+            document.getElementById("kilograms").innerHTML = lbs ? lbs + " lbs is equal to " + kg.toFixed(2) + " kg." : "";
+        }
+    </script>
 </body>
 </html>
 "@
