@@ -1,0 +1,103 @@
+{
+  "id": 202385,
+  "position": 12,
+  "kind": "section",
+  "plan_option_id": 2905,
+  "title": "Strength",
+  "description": "<style>body{  font-family: 'Proxima Nova';  font-size: 14px;  color: #0D0D0D;  line-height: 24px;  letter-spacing: 0.38px;}p {  margin: 0;}.benchmark {  color: #AF986C;  font-weight: 600;}</style><body>Every 2:00 x 8:00 (4 Sets) <br />Snatch Pull + Hang Snatch + Snatch + Overhead Squat<br />5x(1+1+1+1) @ <span class='benchmark' data-id='98'>60kg</span> - <span class='benchmark' data-id='98'>70kg</span> // RPE 7-8 <br />Rest 2:00 Between Sets. <br /><br />NOTES:  <br />- This weightlifting complex is meant to improve your technique, do not rush through each movement, take a big breath and get set for each rep!  <br />-----<br />Every 2:00 x 8:00 (4 Sets) <br />Back Squat <br />10 @ <span class='benchmark' data-id='21'>60kg</span> - <span class='benchmark' data-id='21'>65kg</span> // RPE 8 <br /><br /><br />NOTES: <br />- We will be focusing on higher-volume back squats for the next four-week block. These sessions will serve to build a strong base that we can build on later in the cycle. Emphasize performing each rep in each set as well as you can because this will engrain good movement patterns that you will be able to rely on when the weight gets heavy!  </body>",
+  "type": "plain_text",
+  "completed": false,
+  "has_feedback": false,
+  "attachments": [
+    {
+      "id": 344,
+      "type": "video",
+      "title": "Squat Snatch",
+      "content_type": "video/mp4",
+      "position": 0,
+      "video_id": null,
+      "video_subtitles": [],
+      "created_at": 1645629687,
+      "file_size": "24.1 MB",
+      "file_size_raw": 25273495,
+      "src": "https://cdn-app.hwpotraining.com/uploads/media/file/344/Squat_Snatch.mp4",
+      "stream_src": "https://cdn-app.hwpotraining.com/uploads/media/file/344/video.m3u8",
+      "thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/344/thumb_video_Squat_Snatch.jpg",
+      "medium_thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/344/thumb_video_Squat_Snatch.jpg",
+      "is_remove": false
+    },
+    {
+      "id": 335,
+      "type": "video",
+      "title": "Snatch Pull",
+      "content_type": "video/mp4",
+      "position": 2,
+      "video_id": null,
+      "video_subtitles": [],
+      "created_at": 1645629521,
+      "file_size": "13.1 MB",
+      "file_size_raw": 13778812,
+      "src": "https://cdn-app.hwpotraining.com/uploads/media/file/335/Snatch_Pull.mp4",
+      "stream_src": "https://cdn-app.hwpotraining.com/uploads/media/file/335/video.m3u8",
+      "thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/335/thumb_video_Snatch_Pull.jpg",
+      "medium_thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/335/thumb_video_Snatch_Pull.jpg",
+      "is_remove": false
+    },
+    {
+      "id": 217,
+      "type": "video",
+      "title": "High Hang Squat Snatch",
+      "content_type": "video/mp4",
+      "position": 3,
+      "video_id": null,
+      "video_subtitles": [],
+      "created_at": 1645628583,
+      "file_size": "23 MB",
+      "file_size_raw": 24149527,
+      "src": "https://cdn-app.hwpotraining.com/uploads/media/file/217/High_Hang_Squat_Snatch.mp4",
+      "stream_src": "https://cdn-app.hwpotraining.com/uploads/media/file/217/video.m3u8",
+      "thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/217/thumb_video_High_Hang_Squat_Snatch.jpg",
+      "medium_thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/217/thumb_video_High_Hang_Squat_Snatch.jpg",
+      "is_remove": false
+    },
+    {
+      "id": 87,
+      "type": "video",
+      "title": "Back squat",
+      "content_type": "video/mp4",
+      "position": 1,
+      "video_id": null,
+      "video_subtitles": [],
+      "created_at": 1645627711,
+      "file_size": "10.6 MB",
+      "file_size_raw": 11134978,
+      "src": "https://cdn-app.hwpotraining.com/uploads/media/file/87/Back_Squat.mp4",
+      "stream_src": "https://cdn-app.hwpotraining.com/uploads/media/file/87/video.m3u8",
+      "thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/87/thumb_video_Back_Squat.jpg",
+      "medium_thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/87/thumb_video_Back_Squat.jpg",
+      "is_remove": false
+    }
+  ],
+  "benchmarks": [
+    {
+      "id": 98,
+      "name": "1RM Snatch (Full)",
+      "code": "1RM_SNATCH",
+      "measure": "weight",
+      "last_value": 100,
+      "symbol": "kg",
+      "units": "kilogram"
+    },
+    {
+      "id": 21,
+      "name": "1RM Back Squat",
+      "code": "1RM_BACKSQ",
+      "measure": "weight",
+      "last_value": 100,
+      "symbol": "kg",
+      "units": "kilogram"
+    }
+  ],
+  "performance": null,
+  "score": null
+}
