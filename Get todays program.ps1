@@ -140,6 +140,12 @@ $htmlContent = @"
             position: relative;
             bottom: 0;
         }
+        input {
+            padding: 5px;
+            width: 100%;
+            border-radius: 5px;
+            margin: 5px 0;
+        }
     </style>
 </head>
 <body>
@@ -154,7 +160,7 @@ $htmlContent = @"
         <div class="section">
             <h2>Weight Converter</h2>
             <p>Type a weight in pounds to convert it to kilograms:</p>
-            <input id="pounds" type="number" placeholder="Enter weight in lbs" oninput="convertWeight()" style="padding: 5px; width: 100%; border-radius: 5px;">
+            <input id="pounds" type="number" placeholder="Enter weight in lbs" oninput="convertWeight()">
             <p id="kilograms"></p>
         </div>
 
@@ -162,8 +168,17 @@ $htmlContent = @"
         <div class="section">
             <h2>Length Converter</h2>
             <p>Type a length in feet to convert it to meters:</p>
-            <input id="feet" type="number" placeholder="Enter length in feet" oninput="convertLength()" style="padding: 5px; width: 100%; border-radius: 5px;">
+            <input id="feet" type="number" placeholder="Enter length in feet" oninput="convertLength()">
             <p id="meters"></p>
+        </div>
+
+        <!-- Percentage Calculator Section -->
+        <div class="section">
+            <h2>Percentage Calculator</h2>
+            <p>Enter the values to calculate a percentage:</p>
+            <input id="baseValue" type="number" placeholder="Enter the base value">
+            <input id="percentageValue" type="number" placeholder="Enter the percentage" oninput="calculatePercentage()">
+            <p id="percentageResult"></p>
         </div>
     </main>
     <footer>
@@ -171,18 +186,26 @@ $htmlContent = @"
     </footer>
 
     <script>
-        // JavaScript function to convert weight from lbs to kg
+        // Function to convert weight from lbs to kg
         function convertWeight() {
             let lbs = document.getElementById("pounds").value;
             let kg = lbs / 2.20462;
             document.getElementById("kilograms").innerHTML = lbs ? lbs + " lbs is equal to " + kg.toFixed(2) + " kg." : "";
         }
 
-        // JavaScript function to convert length from feet to meters
+        // Function to convert length from feet to meters
         function convertLength() {
             let feet = document.getElementById("feet").value;
             let meters = feet * 0.3048;
             document.getElementById("meters").innerHTML = feet ? feet + " ft is equal to " + meters.toFixed(2) + " m." : "";
+        }
+
+        // Function to calculate percentage
+        function calculatePercentage() {
+            let baseValue = document.getElementById("baseValue").value;
+            let percentageValue = document.getElementById("percentageValue").value;
+            let result = (baseValue * percentageValue) / 100;
+            document.getElementById("percentageResult").innerHTML = baseValue && percentageValue ? percentageValue + "% of " + baseValue + " is " + result.toFixed(2) : "";
         }
     </script>
 </body>
