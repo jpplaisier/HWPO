@@ -28,6 +28,8 @@ jobs:
 
     # Step 1: Run the PowerShell script to get the latest data
     - name: Run PowerShell script
+      env:
+        SITE_PINCODE: ${{ secrets.SITE_PINCODE }}
       run: |
         # Build the body using secrets from GitHub Actions
         $body = @{

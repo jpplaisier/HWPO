@@ -5,9 +5,6 @@ param (
 # Get the GitHub Actions workspace environment variable
 $workspace = $env:GITHUB_WORKSPACE
 
-# Retrieve the pincode from Github Secrets
-$pincode = process.env['SITE_PINCODE']
-
 # Define the API URL for authentication
 $apiUrl = "https://app.hwpo-training.com/mobile/api/v3/users/sign_in"
 
@@ -268,7 +265,7 @@ $htmlContent = @"
         // Pincode validation logic
         function checkPincode() {
             const pincode = document.getElementById('pincodeInput').value;
-            if (pincode === $pincode) {
+            if (pincode === $env_SITE_PINCODE) {
                 document.getElementById('pincodeOverlay').style.display = 'none';
             } else {
                 document.getElementById('errorMessage').style.display = 'block';
