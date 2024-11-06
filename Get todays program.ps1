@@ -68,9 +68,9 @@ for ($i = 0; $i -lt 7; $i++) {
         $sectionDescription = if ($section.description) { $section.description } else { "No description available." }
 
         if ($section.kind -eq "tip") {
-            $youtubeUrl = $section.attachment_for_tip.src
-            $sectionDescription += "<br/><a href='$youtubeUrl' target='_blank'>Watch Daily Video</a><br/>"
-        }
+            $youtubeUrl = if ($section.attachment_for_tip.src -is [Array]) { $section.attachment_for_tip.src[0] } else { $section.attachment_for_tip.src }
+            $sectionDescription += "<video controls width='25%'> <source src='$youtubeUrl' type='video/mp4'> Your browser does not support the video tag.</video>"
+         }
 
         $dayHtml += "<div class='section'><h2>$sectionTitle</h2><div class='description'>$sectionDescription</div></div>"
     }
