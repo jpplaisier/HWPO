@@ -265,10 +265,14 @@ $htmlContent = @"
         // Pincode validation logic
         function checkPincode() {
             const pincode = document.getElementById('pincodeInput').value;
+            console.log("Entered pincode:", pincode);
+            console.log("Expected pincode:", $env_SITE_PINCODE);
+
             if (pincode === $env_SITE_PINCODE) {
                 document.getElementById('pincodeOverlay').style.display = 'none';
             } else {
                 document.getElementById('errorMessage').style.display = 'block';
+                document.getElementById('errorMessage').textContent = "Incorrect pincode. Please try again.";
             }
         }
 
