@@ -70,7 +70,7 @@ for ($i = 0; $i -lt 7; $i++) {
         
             # Add text description followed by the video element in HTML
             $sectionDescription += "<div class='section-content'>"
-            $sectionDescription += "<video controls width='10%' height='10%'> style='display: block; margin-top: 10px;'>"
+            $sectionDescription += "<video controls width='25%' height='25%'> style='display: block; margin-top: 10px;'>"
             $sectionDescription += "<source src='$youtubeUrl' type='video/mp4'>"
             $sectionDescription += "Your browser does not support the video tag."
             $sectionDescription += "</video>"
