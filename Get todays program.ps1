@@ -6,7 +6,7 @@ param (
 $workspace = $env:GITHUB_WORKSPACE
 
 # Retrieve the pincode from Github Secrets
-$pincode = Get-Secret -Name "SITE_PINCODE"
+$pincode = process.env['SITE_PINCODE']
 
 # Define the API URL for authentication
 $apiUrl = "https://app.hwpo-training.com/mobile/api/v3/users/sign_in"
