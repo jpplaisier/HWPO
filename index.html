@@ -82,9 +82,61 @@
             color: #000;
             font-weight: bold;
         }
+        
+        /* Pincode Authentication Overlay */
+        #pincodeOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            z-index: 9999;
+        }
+
+        #pincodeBox {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+        }
+
+        #pincodeBox input {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        #pincodeBox button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #ffa500;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
+    <!-- Pincode Overlay -->
+    <div id="pincodeOverlay">
+        <div id="pincodeBox">
+            <h2>Enter Access Code</h2>
+            <input type="password" id="pincodeInput" placeholder="Enter pincode" maxlength="4">
+            <button onclick="checkPincode()">Submit</button>
+            <p id="errorMessage" style="color: red; display: none;">Incorrect pincode. Try again.</p>
+        </div>
+    </div>
+
     <header>
         <img src='https://cdn.prod.website-files.com/61c2f086d385db179866da52/61c2ff8084dad62e03fa7111_HWPO-Training-Logo-White.svg' alt='HWPO Logo'>
         <h1>Weekly Training Schedule</h1>
@@ -131,6 +183,16 @@
     </footer>
 
     <script>
+        // Pincode validation logic
+        function checkPincode() {
+            const pincode = document.getElementById('pincodeInput').value;
+            if (pincode === ) {
+                document.getElementById('pincodeOverlay').style.display = 'none';
+            } else {
+                document.getElementById('errorMessage').style.display = 'block';
+            }
+        }
+
         // Show the selected day's content
         function showDay(dayIndex) {
             document.querySelectorAll('.day').forEach(day => day.style.display = 'none');
