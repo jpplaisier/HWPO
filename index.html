@@ -77,6 +77,11 @@
         .day-selector button:hover {
             background-color: #888;
         }
+        .highlight {
+            background-color: #ffa500;
+            color: #000;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -84,13 +89,13 @@
         <img src='https://cdn.prod.website-files.com/61c2f086d385db179866da52/61c2ff8084dad62e03fa7111_HWPO-Training-Logo-White.svg' alt='HWPO Logo'>
         <h1>Weekly Training Schedule</h1>
         <div class="day-selector">
-            <button onclick="showDay(0)">Sunday</button>
-            <button onclick="showDay(1)">Monday</button>
-            <button onclick="showDay(2)">Tuesday</button>
-            <button onclick="showDay(3)">Wednesday</button>
-            <button onclick="showDay(4)">Thursday</button>
-            <button onclick="showDay(5)">Friday</button>
-            <button onclick="showDay(6)">Saturday</button>
+            <button onclick="showDay(0)" id="button-0">Sunday</button>
+            <button onclick="showDay(1)" id="button-1">Monday</button>
+            <button onclick="showDay(2)" id="button-2">Tuesday</button>
+            <button onclick="showDay(3)" id="button-3">Wednesday</button>
+            <button onclick="showDay(4)" id="button-4">Thursday</button>
+            <button onclick="showDay(5)" id="button-5">Friday</button>
+            <button onclick="showDay(6)" id="button-6">Saturday</button>
         </div>
     </header>
     <main>
@@ -130,21 +135,29 @@
         function showDay(dayIndex) {
             document.querySelectorAll('.day').forEach(day => day.style.display = 'none');
             document.getElementById('day-' + dayIndex).style.display = 'block';
-        }
-        // Show today's content by default
-        showDay((new Date()).getDay());
 
-        // Converters and calculators
+            // Highlight the selected day button
+            document.querySelectorAll('.day-selector button').forEach(btn => btn.classList.remove('highlight'));
+            document.getElementById('button-' + dayIndex).classList.add('highlight');
+        }
+        
+        // Highlight today's button and show today's content by default
+        const todayIndex = new Date().getDay();
+        document.getElementById('button-' + todayIndex).classList.add('highlight');
+        showDay(todayIndex);
+
         function convertWeight() {
             let lbs = document.getElementById("pounds").value;
             let kg = lbs / 2.20462;
             document.getElementById("kilograms").innerHTML = lbs ? lbs + " lbs is equal to " + kg.toFixed(2) + " kg." : "";
         }
+
         function convertLength() {
             let feet = document.getElementById("feet").value;
             let meters = feet * 0.3048;
             document.getElementById("meters").innerHTML = feet ? feet + " ft is equal to " + meters.toFixed(2) + " m." : "";
         }
+
         function calculatePercentage() {
             let baseValue = document.getElementById("baseValue").value;
             let percentageValue = document.getElementById("percentageValue").value;
