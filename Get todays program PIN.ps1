@@ -5,6 +5,9 @@ param (
 # Get the GitHub Actions workspace environment variable
 $workspace = $env:GITHUB_WORKSPACE
 
+# Retrieve SITE_PINCODE from environment variables
+$pincode = $env:SITE_PINCODE
+
 # Define the API URL for authentication
 $apiUrl = "https://app.hwpo-training.com/mobile/api/v3/users/sign_in"
 
@@ -65,17 +68,9 @@ for ($i = 0; $i -lt 7; $i++) {
         $sectionDescription = if ($section.description) { $section.description } else { "No description available." }
 
         if ($section.kind -eq "tip") {
-            # Determine the correct URL for the video
             $youtubeUrl = if ($section.attachment_for_tip.src -is [Array]) { $section.attachment_for_tip.src[0] } else { $section.attachment_for_tip.src }
-        
-            # Add text description followed by the video element in HTML
-            $sectionDescription += "<div class='section-content'>"
-            $sectionDescription += "<video controls width='10%' height='10%'> style='display: block; margin-top: 10px;'>"
-            $sectionDescription += "<source src='$youtubeUrl' type='video/mp4'>"
-            $sectionDescription += "Your browser does not support the video tag."
-            $sectionDescription += "</video>"
-            $sectionDescription += "</div>"
-        }        
+            $sectionDescription += "<video controls width='25%'> <source src='$youtubeUrl' type='video/mp4'> Your browser does not support the video tag.</video>"
+         }
 
         $dayHtml += "<div class='section'><h2>$sectionTitle</h2><div class='description'>$sectionDescription</div></div>"
     }
@@ -169,9 +164,61 @@ $htmlContent = @"
             color: #000;
             font-weight: bold;
         }
+        
+        /* Pincode Authentication Overlay */
+        #pincodeOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            z-index: 9999;
+        }
+
+        #pincodeBox {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+        }
+
+        #pincodeBox input {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        #pincodeBox button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #ffa500;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
+    <!-- Pincode Overlay -->
+    <div id="pincodeOverlay">
+        <div id="pincodeBox">
+            <h2>Enter Access Code</h2>
+            <input type="password" id="pincodeInput" placeholder="Enter pincode" maxlength="4">
+            <button onclick="checkPincode()">Submit</button>
+            <p id="errorMessage" style="color: red; display: none;">Incorrect pincode. Try again.</p>
+        </div>
+    </div>
+
     <header>
         <img src='https://cdn.prod.website-files.com/61c2f086d385db179866da52/61c2ff8084dad62e03fa7111_HWPO-Training-Logo-White.svg' alt='HWPO Logo'>
         <h1>Weekly Training Schedule</h1>
@@ -218,6 +265,23 @@ $htmlContent = @"
     </footer>
 
     <script>
+        // Embed pincode in HTML as a JavaScript variable
+        const expectedPincode = '$pincode';
+
+        // Pincode validation logic
+        function checkPincode() {
+            const pincode = document.getElementById('pincodeInput').value;
+            console.log("Entered pincode:", pincode);
+
+            if (pincode === expectedPincode) {
+                document.getElementById('pincodeOverlay').style.display = 'none';
+            } else {
+                document.getElementById('errorMessage').style.display = 'block';
+                document.getElementById('errorMessage').textContent = "Incorrect pincode. Please try again.";
+            }
+        }
+
+
         // Show the selected day's content
         function showDay(dayIndex) {
             document.querySelectorAll('.day').forEach(day => day.style.display = 'none');
