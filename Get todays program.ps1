@@ -266,9 +266,9 @@ $htmlContent = @"
         function checkPincode() {
             const pincode = document.getElementById('pincodeInput').value;
             console.log("Entered pincode:", pincode);
-            console.log("Expected pincode:", $env_SITE_PINCODE);
+            console.log("Expected pincode:", "1234");
 
-            if (pincode === $env_SITE_PINCODE) {
+            if (pincode === "1234") {
                 document.getElementById('pincodeOverlay').style.display = 'none';
             } else {
                 document.getElementById('errorMessage').style.display = 'block';
