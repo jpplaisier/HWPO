@@ -5,6 +5,9 @@ param (
 # Get the GitHub Actions workspace environment variable
 $workspace = $env:GITHUB_WORKSPACE
 
+# Retrieve SITE_PINCODE from environment variables
+$pincode = $env:SITE_PINCODE
+
 # Define the API URL for authentication
 $apiUrl = "https://app.hwpo-training.com/mobile/api/v3/users/sign_in"
 
@@ -262,19 +265,22 @@ $htmlContent = @"
     </footer>
 
     <script>
+        // Embed pincode in HTML as a JavaScript variable
+        const expectedPincode = '$pincode';
+
         // Pincode validation logic
         function checkPincode() {
             const pincode = document.getElementById('pincodeInput').value;
             console.log("Entered pincode:", pincode);
-            console.log("Expected pincode:", "1234");
 
-            if (pincode === "1234") {
+            if (pincode === expectedPincode) {
                 document.getElementById('pincodeOverlay').style.display = 'none';
             } else {
                 document.getElementById('errorMessage').style.display = 'block';
                 document.getElementById('errorMessage').textContent = "Incorrect pincode. Please try again.";
             }
         }
+
 
         // Show the selected day's content
         function showDay(dayIndex) {
