@@ -1,21 +1,21 @@
 param (
-    [string]$BodyJson # This parameters contains the API authentication details
+    [string]$BodyJson # Contains the API authentication details
 )
 
 # Get the GitHub Actions workspace environment variable
 $workspace = $env:GITHUB_WORKSPACE
 
-# Define the API URL for the authentication
+# Define the API URL for authentication
 $apiUrl = "https://app.hwpo-training.com/mobile/api/v3/users/sign_in"
 
 # Set up the HTTP headers
 $headers = @{
-    "user-agent" = "HWPOClient/1.3.19 (hwpo-training-app; build:211732; iOS 15.8.2) Alamofire/5.4.1"
+    "user-agent" = "HWPOClient/1.3.19 (hwpo-training-app; build:211732; iOS 18.0.1) Alamofire/5.4.1"
     "Content-Type" = "application/json"
 }
 
 # Make the POST request to retrieve the Bearer token
-$gettoken = Invoke-RestMethod -Uri $apiUrl -Method POST -Headers $headers -Body $bodyJson
+$gettoken = Invoke-RestMethod -Uri $apiUrl -Method POST -Headers $headers -Body $BodyJson
 
 # Check if the response is valid
 if (-not $gettoken) {
@@ -23,68 +23,66 @@ if (-not $gettoken) {
     return
 }
 
-# Define the API URL for the GET request
-$todayDate = (Get-Date).ToString("yyyy-MM-dd")
-$apiUrl = "https://app.hwpo-training.com/mobile/api/v3/athlete/schedules/$todayDate/plans/3216"
+# Initialize a variable to hold HTML for the entire week's schedule
+$weekHtml = ""
 
-# Set up the HTTP headers with the Bearer token
-$headers = @{
-    "Authorization" = "Bearer $($gettoken.access_token)"
-    "user-agent" = "HWPOClient/1.3.19 (hwpo-training-app; build:211732; iOS 15.8.2) Alamofire/5.4.1"
+# Loop through each day of the week (0=Sunday, 1=Monday, ..., 6=Saturday)
+for ($i = 0; $i -lt 7; $i++) {
+    # Calculate the date for each day of the week
+    $date = (Get-Date).AddDays($i - (Get-Date).DayOfWeek.value__).ToString("yyyy-MM-dd")
+    $apiUrl = "https://app.hwpo-training.com/mobile/api/v3/athlete/schedules/$date/plans/3216"
+    
+    # Update headers with Bearer token
+    $headers["Authorization"] = "Bearer $($gettoken.access_token)"
+    
+    # Get schedule for the specific day
+    $getschedule = Invoke-RestMethod -Uri $apiUrl -Method GET -Headers $headers
+    if (-not $getschedule) { continue }
+    
+    # Format the date
+    $scheduleDate = [datetime]::UnixEpoch.AddSeconds($getschedule.schedule.date).ToString("dd-MM-yyyy")
+    
+    # Prepare sections for each day
+    $dayHtml = "<div class='day' id='day-$i' style='display:none;'>"
+    $dayHtml += "<h1>$scheduleDate</h1>"
+
+    # Track added sections to prevent duplicates
+    $addedSections = @()  # Array to track added section titles and kinds
+
+    foreach ($section in $getschedule.schedule.sections) {
+        # Skip "pre_wod" and "post_wod" sections
+        if ($section.kind -eq "pre_wod" -or $section.kind -eq "post_wod") { continue }
+
+        # Check for duplicates based on title or kind
+        if ($addedSections -contains $section.title -or $addedSections -contains $section.kind) {
+            continue
+        }
+
+        # Mark section as added
+        $addedSections += $section.title
+
+        $sectionTitle = if ($section.title) { $section.title } else { "Section $($section.kind)" }
+        $sectionDescription = if ($section.description) { $section.description } else { "No description available." }
+
+        if ($section.kind -eq "tip") {
+            $youtubeUrl = $section.attachment_for_tip.src
+            $sectionDescription += "<br/><a href='$youtubeUrl' target='_blank'>Watch Daily Video</a><br/>"
+        }
+
+        $dayHtml += "<div class='section'><h2>$sectionTitle</h2><div class='description'>$sectionDescription</div></div>"
+    }
+    $dayHtml += "</div>"
+    $weekHtml += $dayHtml
 }
 
-# Make the GET request to retrieve the HWPO schedule data
-$getschedule = Invoke-RestMethod -Uri $apiUrl -Method GET -Headers $headers
-
-# Check if the response is valid
-if (-not $getschedule) {
-    Write-Error "Failed to fetch program data from the API."
-    return
-}
-
-# Extract the schedule date and convert to a readable format
-$scheduleDate = [datetime]::UnixEpoch.AddSeconds($getschedule.schedule.date).ToString("dd-MM-yyyy")
-
-# Prepare sections (warmup, strength, metcon, accessory) for HTML.
-$sectionsHtml = ""
-$addedSections = @()  # Array to track added section titles to prevent duplicates (some sections are returned twice by the API)
-
-# Loop through the sections
-foreach ($section in $getschedule.schedule.sections) {
-    # Skip "pre_wod" and "post_wod" sections
-    if ($section.kind -eq "pre_wod" -or $section.kind -eq "post_wod") {
-        continue
-    }
-
-    # Check for duplicates based on title or kind
-    if ($addedSections -contains $section.title -or $addedSections -contains $section.kind) {
-        continue
-    }
-
-    # Mark section as added
-    $addedSections += $section.title
-
-    $sectionTitle = if ($section.title) { $section.title } else { "Section $($section.kind)" }
-    $sectionDescription = if ($section.description) { $section.description } else { "No description available." }
-
-    # Handle the DAILY VIDEO section
-    if ($section.kind -eq "tip") {
-        $youtubeUrl = $section.attachment_for_tip.src
-        $sectionDescription += "<br/><a href='$youtubeUrl' target='_blank'>Watch Daily Video</a><br/>"
-    }
-
-    # Append section to HTML (retaining any HTML formatting)
-    $sectionsHtml += "<div class='section'><h2>$sectionTitle</h2><div class='description'>$sectionDescription</div></div>"
-}
-
-# Combine all parts into a full HTML document
+# Combine all days into the final HTML
 $htmlContent = @"
 <html>
 <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <title>Training Schedule</title>
+    <title>Weekly Training Schedule</title>
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -146,15 +144,36 @@ $htmlContent = @"
             border-radius: 5px;
             margin: 5px 0;
         }
+        .day-selector button {
+            margin: 5px;
+            padding: 10px;
+            background-color: #555;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .day-selector button:hover {
+            background-color: #888;
+        }
     </style>
 </head>
 <body>
     <header>
         <img src='https://cdn.prod.website-files.com/61c2f086d385db179866da52/61c2ff8084dad62e03fa7111_HWPO-Training-Logo-White.svg' alt='HWPO Logo'>
-        <h1>$scheduleDate</h1>
+        <h1>Weekly Training Schedule</h1>
+        <div class="day-selector">
+            <button onclick="showDay(0)">Sunday</button>
+            <button onclick="showDay(1)">Monday</button>
+            <button onclick="showDay(2)">Tuesday</button>
+            <button onclick="showDay(3)">Wednesday</button>
+            <button onclick="showDay(4)">Thursday</button>
+            <button onclick="showDay(5)">Friday</button>
+            <button onclick="showDay(6)">Saturday</button>
+        </div>
     </header>
     <main>
-        $sectionsHtml
+        $weekHtml
 
         <!-- Weight Converter Section -->
         <div class="section">
@@ -186,21 +205,25 @@ $htmlContent = @"
     </footer>
 
     <script>
-        // Function to convert weight from lbs to kg
+        // Show the selected day's content
+        function showDay(dayIndex) {
+            document.querySelectorAll('.day').forEach(day => day.style.display = 'none');
+            document.getElementById('day-' + dayIndex).style.display = 'block';
+        }
+        // Show today's content by default
+        showDay((new Date()).getDay());
+
+        // Converters and calculators
         function convertWeight() {
             let lbs = document.getElementById("pounds").value;
             let kg = lbs / 2.20462;
             document.getElementById("kilograms").innerHTML = lbs ? lbs + " lbs is equal to " + kg.toFixed(2) + " kg." : "";
         }
-
-        // Function to convert length from feet to meters
         function convertLength() {
             let feet = document.getElementById("feet").value;
             let meters = feet * 0.3048;
             document.getElementById("meters").innerHTML = feet ? feet + " ft is equal to " + meters.toFixed(2) + " m." : "";
         }
-
-        // Function to calculate percentage
         function calculatePercentage() {
             let baseValue = document.getElementById("baseValue").value;
             let percentageValue = document.getElementById("percentageValue").value;
@@ -215,7 +238,7 @@ $htmlContent = @"
 # Save the HTML to a file
 Set-Content -Path "index.html" -Value $htmlContent
 
-# Ensure that the output directory exists (e.g., _data folder)
+# Ensure the output directory exists
 $outputPath = Join-Path $workspace "_data"
 if (-Not (Test-Path $outputPath)) {
     New-Item -ItemType Directory -Force -Path $outputPath
