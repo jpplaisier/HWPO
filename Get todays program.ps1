@@ -79,12 +79,14 @@ for ($i = 0; $i -lt 7; $i++) {
 
         # Loop through attachments to include videos with titles
         foreach ($attachment in $sectionDetails.attachments) {
-            if ($attachment.type -eq "video" -and $attachment.src) {
+            if ($attachment.type -eq "video") {
                 $videoUrl = $attachment.src
                 $videoTitle = $attachment.title
+                $videothumb= $attachment.thumb
                 $dayHtml += "<div class='section-content'>"
-                $dayHtml += "<h3>$videoTitle</h3>"  # Add video title
+                $dayHtml += "<h3>$videoTitle</h3>"
                 $dayHtml += "<video controls width='25%' height='25%' style='display: block; margin-top: 10px;'>"
+                $dayHtml += "<poster='$videothumb'>"
                 $dayHtml += "<source src='$videoUrl' type='video/mp4'>"
                 $dayHtml += "Your browser does not support the video tag."
                 $dayHtml += "</video>"
