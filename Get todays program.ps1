@@ -40,7 +40,7 @@ for ($i = 0; $i -lt 7; $i++) {
     if (-not $getschedule) { continue }
     
     #######
-    $getschedule | ConvertTo-Json -Depth 10 | Set-Content -Path ".\$date.json"
+    #$getschedule | ConvertTo-Json -Depth 10 | Set-Content -Path ".\$date.json"
     #######
 
     # Format the date
@@ -63,7 +63,7 @@ for ($i = 0; $i -lt 7; $i++) {
         $sectionDetails = Invoke-RestMethod -Uri $sectionDetailsUrl -Method GET -Headers $headers
 
         #######
-        $sectionDetails | ConvertTo-Json -Depth 10 | Set-Content -Path ".\$date-sectiondetails.json"
+        #$sectionDetails | ConvertTo-Json -Depth 10 | Set-Content -Path ".\$date-sectiondetails.json"
         #######
 
         # Extract section title, description, and available videos
@@ -71,7 +71,7 @@ for ($i = 0; $i -lt 7; $i++) {
         $sectionDescription = if ($section.description) { $section.description } else { "No description available." }
 
         #######
-        Write-Host "Section Title = $sectionTitle"
+        #Write-Host "Section Title = $sectionTitle"
         #######
 
         # Add section content to HTML
