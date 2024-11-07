@@ -1,0 +1,50 @@
+{
+  "id": 206174,
+  "position": 6,
+  "kind": "section",
+  "plan_option_id": 2906,
+  "title": "bonus",
+  "description": "<style>body{  font-family: 'Proxima Nova';  font-size: 14px;  color: #0D0D0D;  line-height: 24px;  letter-spacing: 0.38px;}p {  margin: 0;}.benchmark {  color: #AF986C;  font-weight: 600;}</style><body>EMOM 12 <br />1: :40 Front Plank <br />2: :40 Side Plank (Left) <br />3: :40 Side Plank (Right) </body>",
+  "type": "plain_text",
+  "completed": false,
+  "has_feedback": false,
+  "attachments": [
+    {
+      "id": 307,
+      "type": "video",
+      "title": "Side Plank",
+      "content_type": "video/mp4",
+      "position": 1,
+      "video_id": null,
+      "video_subtitles": [],
+      "created_at": 1645629404,
+      "file_size": "8.5 MB",
+      "file_size_raw": 8910772,
+      "src": "https://cdn-app.hwpotraining.com/uploads/media/file/307/Side_Plank.mp4",
+      "stream_src": "https://cdn-app.hwpotraining.com/uploads/media/file/307/video.m3u8",
+      "thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/307/thumb_video_Side_Plank.jpg",
+      "medium_thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/307/thumb_video_Side_Plank.jpg",
+      "is_remove": false
+    },
+    {
+      "id": 197,
+      "type": "video",
+      "title": "Front Plank",
+      "content_type": "video/mp4",
+      "position": 0,
+      "video_id": null,
+      "video_subtitles": [],
+      "created_at": 1645628431,
+      "file_size": "9.42 MB",
+      "file_size_raw": 9879487,
+      "src": "https://cdn-app.hwpotraining.com/uploads/media/file/197/Front_Plank.mp4",
+      "stream_src": "https://cdn-app.hwpotraining.com/uploads/media/file/197/video.m3u8",
+      "thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/197/thumb_video_Front_Plank.jpg",
+      "medium_thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/197/thumb_video_Front_Plank.jpg",
+      "is_remove": false
+    }
+  ],
+  "benchmarks": null,
+  "performance": null,
+  "score": null
+}
