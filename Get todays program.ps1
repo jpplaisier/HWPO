@@ -107,6 +107,7 @@ $htmlContent = @"
             text-align: center;
             padding: 20px 0;
             border-radius: 15px;
+            border: 1px solid #ffd700; /* Golden border */            
         }
         header img {
             max-width: 200px;
@@ -120,6 +121,7 @@ $htmlContent = @"
         h2 {
             color: #ccc;
             margin-top: 20px;
+            text-transform: uppercase; /* Make titles uppercase */
         }
         .section {
             background: #333;
