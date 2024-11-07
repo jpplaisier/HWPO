@@ -48,7 +48,7 @@ for ($i = 0; $i -lt 7; $i++) {
 
     foreach ($section in $getschedule.schedule.sections) {
         # Skip "pre_wod" and "post_wod" sections and non-matching plan_option_id
-        if (($section.kind -eq "pre_wod" -or $section.kind -eq "post_wod") -or $section.plan_option_id -ne 2905) { continue }
+        if (($section.kind -eq "pre_wod" -or $section.kind -eq "post_wod") -or $section.plan_option_id -ne 2905) { continue } # plan_option_id 2905 = 60, 2906 = FLAGSHIP 2.0
         
         # Retrieve additional section details
         $sectionId = $section.id
