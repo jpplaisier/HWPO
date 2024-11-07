@@ -1,0 +1,33 @@
+{
+  "id": 207429,
+  "position": 7,
+  "kind": "section",
+  "plan_option_id": 2906,
+  "title": "bonus",
+  "description": "<style>body{  font-family: 'Proxima Nova';  font-size: 14px;  color: #0D0D0D;  line-height: 24px;  letter-spacing: 0.38px;}p {  margin: 0;}.benchmark {  color: #AF986C;  font-weight: 600;}</style><body>Fan Bike Intervals.<br />----------<br />8 Sets of (1:00 On / 1:00 Rest)...<br />8/6 Cal \"Sprint\" + 70-80% of Mile Pace *<br /><br />* i.e. after the sprint, hold 70-80% of your mile pace for the remainder of the minute.<br /><br />NOTES: <br />- Your \"sprint\" should be RPE 9. Leave some in the tank. <br />- Get to your 70-80% mile pace as soon as possible. </body>",
+  "type": "plain_text",
+  "completed": false,
+  "has_feedback": false,
+  "attachments": [
+    {
+      "id": 188,
+      "type": "video",
+      "title": "Fan Bike",
+      "content_type": "video/mp4",
+      "position": 0,
+      "video_id": null,
+      "video_subtitles": [],
+      "created_at": 1645628396,
+      "file_size": "9.89 MB",
+      "file_size_raw": 10367259,
+      "src": "https://cdn-app.hwpotraining.com/uploads/media/file/188/Fan_Bike.mp4",
+      "stream_src": "https://cdn-app.hwpotraining.com/uploads/media/file/188/video.m3u8",
+      "thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/188/thumb_video_Fan_Bike.jpg",
+      "medium_thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/188/thumb_video_Fan_Bike.jpg",
+      "is_remove": false
+    }
+  ],
+  "benchmarks": null,
+  "performance": null,
+  "score": null
+}

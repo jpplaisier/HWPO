@@ -1,0 +1,43 @@
+{
+  "id": 205812,
+  "position": 7,
+  "kind": "section",
+  "plan_option_id": 2906,
+  "title": "BONUS",
+  "description": "<style>body{  font-family: 'Proxima Nova';  font-size: 14px;  color: #0D0D0D;  line-height: 24px;  letter-spacing: 0.38px;}p {  margin: 0;}.benchmark {  color: #AF986C;  font-weight: 600;}</style><body>SPIN BIKE INTERVALS.<br />------<br />WARM-UP. <br />3:00 @ Easy Spin <br />+<br />3 Sets: <br />1:00 @ <span class='benchmark' data-id='444'>104watts</span><br />:30 @ <span class='benchmark' data-id='444'>130watts</span><br />:30 @ Easy Spin <br />No Rest Between Sets.<br />----------<br />MAIN SET.<br />7 Sets: <br />2:00 @ <span class='benchmark' data-id='444'>149watts</span> <br />Rest 1:00 Between Sets.<br /><br />NOTES: <br />- Aim to hold as close to the prescribed pace as you can. <br />- If you are using a PM5 monitor, use this link to set your monitor and track your results on ErgData: https://workout.ergdata.com/shared/ejsqrzle</body>",
+  "type": "plain_text",
+  "completed": false,
+  "has_feedback": false,
+  "attachments": [
+    {
+      "id": 120,
+      "type": "video",
+      "title": "Bike Erg",
+      "content_type": "video/mp4",
+      "position": 0,
+      "video_id": null,
+      "video_subtitles": [],
+      "created_at": 1645627891,
+      "file_size": "8.83 MB",
+      "file_size_raw": 9262081,
+      "src": "https://cdn-app.hwpotraining.com/uploads/media/file/120/Bike_Erg.mp4",
+      "stream_src": "https://cdn-app.hwpotraining.com/uploads/media/file/120/video.m3u8",
+      "thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/120/thumb_video_Bike_Erg.jpg",
+      "medium_thumb": "https://cdn-app.hwpotraining.com/uploads/media/file/120/thumb_video_Bike_Erg.jpg",
+      "is_remove": false
+    }
+  ],
+  "benchmarks": [
+    {
+      "id": 444,
+      "name": "Average Watts - 20 Mins Bike Erg Ride",
+      "code": "BIKEERG_20MIN_WATTS",
+      "measure": "watts",
+      "last_value": 130,
+      "symbol": "Watts",
+      "units": "time"
+    }
+  ],
+  "performance": null,
+  "score": null
+}
