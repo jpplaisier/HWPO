@@ -1,9 +1,3 @@
-param (
-    [string]$BodyJson # Contains the API authentication details
-)
-
-# Get the GitHub Actions workspace environment variable
-$workspace = $env:GITHUB_WORKSPACE
 
 # Define the API URL for authentication
 $apiUrl = "https://app.hwpo-training.com/mobile/api/v3/users/sign_in"
@@ -35,14 +29,10 @@ for ($i = 0; $i -lt 7; $i++) {
     # Update headers with Bearer token
     $headers["Authorization"] = "Bearer $($gettoken.access_token)"
     
-    # Get schedule
+    # Get schedule for the specific day
     $getschedule = Invoke-RestMethod -Uri $apiUrl -Method GET -Headers $headers
     if (-not $getschedule) { continue }
     
-    #######
-    $getschedule | ConvertTo-Json -Depth 10 | Set-Content -Path ".\$date.json"
-    #######
-
     # Format the date
     $scheduleDate = [datetime]::UnixEpoch.AddSeconds($getschedule.schedule.date).ToString("dd-MM-yyyy")
     
@@ -50,50 +40,40 @@ for ($i = 0; $i -lt 7; $i++) {
     $dayHtml = "<div class='day' id='day-$i' style='display:none;'>"
     $dayHtml += "<h1>$scheduleDate</h1>"
 
+    # Track added sections to prevent duplicates
+    $addedSections = @()  # Array to track added section titles and kinds
+
     foreach ($section in $getschedule.schedule.sections) {
-        # Skip "pre_wod" and "post_wod" sections and non-matching plan_option_id (2905 = 60, 2906 = FLAGSHIP 2.0)
-        if (($section.kind -eq "pre_wod" -or $section.kind -eq "post_wod") -or $section.plan_option_id -eq 2905) { continue }
-        
-        # Retrieve additional section details
-        $sectionId = $section.id
-        $scheduleId = $getschedule.schedule.id
-        $sectionDetailsUrl = "https://app.hwpo-training.com/mobile/api/v3/schedules/$scheduleId/sections/$sectionId"
-        
-        # Fetch the section details
-        $sectionDetails = Invoke-RestMethod -Uri $sectionDetailsUrl -Method GET -Headers $headers
+        # Skip "pre_wod" and "post_wod" sections
+        if ($section.kind -eq "pre_wod" -or $section.kind -eq "post_wod") { continue }
 
-        #######
-        $sectionDetails | ConvertTo-Json -Depth 10 | Set-Content -Path ".\$date-sectiondetails.json"
-        #######
+        # Check for duplicates based on title or kind
+        if ($addedSections -contains $section.title -or $addedSections -contains $section.kind) {
+            continue
+        }
 
-        # Extract section title, description, and available videos
+        # Mark section as added
+        $addedSections += $section.title
+
         $sectionTitle = if ($section.title) { $section.title } else { "Section $($section.kind)" }
         $sectionDescription = if ($section.description) { $section.description } else { "No description available." }
 
-        #######
-        Write-Host "Section Title = $sectionTitle"
-        #######
+        if ($section.kind -eq "tip") {
+            # Determine the correct URL for the video
+            $youtubeUrl = if ($section.attachment_for_tip.src -is [Array]) { $section.attachment_for_tip.src[0] } else { $section.attachment_for_tip.src }
+        
+            # Add text description followed by the video element in HTML
+            $sectionDescription += "<div class='section-content'>"
+            $sectionDescription += "<video controls width='25%' height='25%'> style='display: block; margin-top: 10px;'>"
+            $sectionDescription += "<source src='$youtubeUrl' type='video/mp4'>"
+            $sectionDescription += "Your browser does not support the video tag."
+            $sectionDescription += "</video>"
+            $sectionDescription += "</div>"
+        }        
 
-        # Add section content to HTML
-        $dayHtml += "<div class='section'><h2>$sectionTitle</h2><div class='description'>$sectionDescription</div>"
-
-        # Loop through attachments to include videos with titles
-        foreach ($attachment in $sectionDetails.attachments) {
-            if ($attachment.type -eq "video" -and $attachment.src) {
-                $videoUrl = $attachment.src
-                $videoTitle = $attachment.title
-                $dayHtml += "<div class='section-content'>"
-                $dayHtml += "<h3>$videoTitle</h3>"  # Add video title
-                $dayHtml += "<video controls width='25%' height='25%' style='display: block; margin-top: 10px;'>"
-                $dayHtml += "<source src='$videoUrl' type='video/mp4'>"
-                $dayHtml += "Your browser does not support the video tag."
-                $dayHtml += "</video>"
-                $dayHtml += "</div>"
-            }
-        }
-        $dayHtml += "</div>"  # Close section div
+        $dayHtml += "<div class='section'><h2>$sectionTitle</h2><div class='description'>$sectionDescription</div></div>"
     }
-    $dayHtml += "</div>"  # Close day div
+    $dayHtml += "</div>"
     $weekHtml += $dayHtml
 }
 
@@ -119,7 +99,6 @@ $htmlContent = @"
             text-align: center;
             padding: 20px 0;
             border-radius: 15px;
-            border: 1px solid #ffd700; /* Golden border */            
         }
         header img {
             max-width: 200px;
@@ -133,7 +112,6 @@ $htmlContent = @"
         h2 {
             color: #ccc;
             margin-top: 20px;
-            text-transform: uppercase; /* Make titles uppercase */
         }
         .section {
             background: #333;
@@ -274,9 +252,3 @@ $htmlContent = @"
 
 # Save the HTML to a file
 Set-Content -Path "index.html" -Value $htmlContent
-
-# Ensure the output directory exists
-$outputPath = Join-Path $workspace "_data"
-if (-Not (Test-Path $outputPath)) {
-    New-Item -ItemType Directory -Force -Path $outputPath
-}
