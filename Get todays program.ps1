@@ -65,11 +65,13 @@ for ($i = 0; $i -lt 7; $i++) {
         # Add section content to HTML
         $dayHtml += "<div class='section'><h2>$sectionTitle</h2><div class='description'>$sectionDescription</div>"
 
-        # Loop through attachments to include videos
+        # Loop through attachments to include videos with titles
         foreach ($attachment in $sectionDetails.attachments) {
             if ($attachment.type -eq "video" -and $attachment.src) {
                 $videoUrl = $attachment.src
+                $videoTitle = $attachment.title
                 $dayHtml += "<div class='section-content'>"
+                $dayHtml += "<h3>$videoTitle</h3>"  # Add video title
                 $dayHtml += "<video controls width='25%' height='25%' style='display: block; margin-top: 10px;'>"
                 $dayHtml += "<source src='$videoUrl' type='video/mp4'>"
                 $dayHtml += "Your browser does not support the video tag."
