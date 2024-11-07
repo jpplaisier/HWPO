@@ -46,40 +46,40 @@ for ($i = 0; $i -lt 7; $i++) {
     $dayHtml = "<div class='day' id='day-$i' style='display:none;'>"
     $dayHtml += "<h1>$scheduleDate</h1>"
 
-    # Track added sections to prevent duplicates
-    $addedSections = @()  # Array to track added section titles and kinds
-
     foreach ($section in $getschedule.schedule.sections) {
-        # Skip "pre_wod" and "post_wod" sections
-        if ($section.kind -eq "pre_wod" -or $section.kind -eq "post_wod") { continue }
-
-        # Check for duplicates based on title or kind
-        if ($addedSections -contains $section.title -or $addedSections -contains $section.kind) {
-            continue
-        }
-
-        # Mark section as added
-        $addedSections += $section.title
-
-        $sectionTitle = if ($section.title) { $section.title } else { "Section $($section.kind)" }
-        $sectionDescription = if ($section.description) { $section.description } else { "No description available." }
-
-        if ($section.kind -eq "tip") {
-            # Determine the correct URL for the video
-            $youtubeUrl = if ($section.attachment_for_tip.src -is [Array]) { $section.attachment_for_tip.src[0] } else { $section.attachment_for_tip.src }
+        # Skip "pre_wod" and "post_wod" sections and non-matching plan_option_id
+        if (($section.kind -eq "pre_wod" -or $section.kind -eq "post_wod") -or $section.plan_option_id -ne 2905) { continue }
         
-            # Add text description followed by the video element in HTML
-            $sectionDescription += "<div class='section-content'>"
-            $sectionDescription += "<video controls width='25%' height='25%'> style='display: block; margin-top: 10px;'>"
-            $sectionDescription += "<source src='$youtubeUrl' type='video/mp4'>"
-            $sectionDescription += "Your browser does not support the video tag."
-            $sectionDescription += "</video>"
-            $sectionDescription += "</div>"
-        }        
+        # Retrieve additional section details
+        $sectionId = $section.id
+        $scheduleId = $getschedule.schedule.id
+        $sectionDetailsUrl = "https://app.hwpo-training.com/mobile/api/v3/schedules/$scheduleId/sections/$sectionId"
+        
+        # Fetch the section details
+        $sectionDetails = Invoke-RestMethod -Uri $sectionDetailsUrl -Method GET -Headers $headers
 
-        $dayHtml += "<div class='section'><h2>$sectionTitle</h2><div class='description'>$sectionDescription</div></div>"
+        # Extract section title, description, and available videos
+        $sectionTitle = if ($sectionDetails.title) { $sectionDetails.title } else { "Section $($section.kind)" }
+        $sectionDescription = if ($sectionDetails.description) { $sectionDetails.description } else { "No description available." }
+
+        # Add section content to HTML
+        $dayHtml += "<div class='section'><h2>$sectionTitle</h2><div class='description'>$sectionDescription</div>"
+
+        # Loop through attachments to include videos
+        foreach ($attachment in $sectionDetails.attachments) {
+            if ($attachment.type -eq "video" -and $attachment.src) {
+                $videoUrl = $attachment.src
+                $dayHtml += "<div class='section-content'>"
+                $dayHtml += "<video controls width='25%' height='25%' style='display: block; margin-top: 10px;'>"
+                $dayHtml += "<source src='$videoUrl' type='video/mp4'>"
+                $dayHtml += "Your browser does not support the video tag."
+                $dayHtml += "</video>"
+                $dayHtml += "</div>"
+            }
+        }
+        $dayHtml += "</div>"  # Close section div
     }
-    $dayHtml += "</div>"
+    $dayHtml += "</div>"  # Close day div
     $weekHtml += $dayHtml
 }
 
