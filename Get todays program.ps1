@@ -83,16 +83,20 @@ for ($i = 0; $i -lt 7; $i++) {
                 $videoUrl = $attachment.src
                 $videoTitle = $attachment.title
                 $thumbnailUrl = $attachment.thumb
-        
+
                 $dayHtml += "<div class='section-content' style='text-align: center; margin-top: 10px;'>"
                 $dayHtml += "<h3>$videoTitle</h3>"  # Add video title
-                $dayHtml += "<video controls poster='$thumbnailUrl' style='max-width: 25%; height: auto; margin-top: 10px;'>"
+
+                # Apply iOS best practices for video thumbnails
+                $dayHtml += "<video controls poster='$thumbnailUrl' preload='none' playsinline muted style='max-width: 25%; height: auto; margin-top: 10px;' loading='lazy'>"
                 $dayHtml += "<source src='$videoUrl' type='video/mp4'>"
                 $dayHtml += "Your browser does not support the video tag."
                 $dayHtml += "</video>"
+
                 $dayHtml += "</div>"
             }
         }
+
         
         $dayHtml += "</div>"  # Close section div
     }
