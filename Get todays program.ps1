@@ -80,19 +80,22 @@ for ($i = 0; $i -lt 7; $i++) {
         # Loop through attachments to include videos with titles
         foreach ($attachment in $sectionDetails.attachments) {
             if ($attachment.type -eq "video" -and $attachment.src) {
-                $videoUrl = $attachment.src
+                $videoUrl = $attachment.src + "#t=0.1"  # Add #t=0.1 to load the frame at 0.1 seconds
                 $videoTitle = $attachment.title
-                $thumbnailUrl = $attachment.thumb
 
-                $dayHtml += "<div class='section-content' style='text-align: left; margin-top: 10px;'>"
-                $dayHtml += "<h3>$videoTitle</h3>"
-                $dayHtml += "<video controls poster='$thumbnailUrl' preload='none' playsinline muted style='max-width: 100%; height: auto; margin-top: 10px;' loading='lazy'>"
+                $dayHtml += "<div class='section-content' style='text-align: center; margin-top: 10px;'>"
+                $dayHtml += "<h3>$videoTitle</h3>"  # Add video title
+
+                # Use preload="metadata" to load minimal data and use #t=0.1 to set thumbnail from video content
+                $dayHtml += "<video controls preload='metadata' src='$videoUrl' style='max-width: 25%; height: auto; margin-top: 10px;'>"
                 $dayHtml += "<source src='$videoUrl' type='video/mp4'>"
                 $dayHtml += "Your browser does not support the video tag."
                 $dayHtml += "</video>"
+
                 $dayHtml += "</div>"
             }
         }
+
         
         $dayHtml += "</div>"  # Close section div
     }
