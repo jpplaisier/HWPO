@@ -86,7 +86,7 @@ for ($i = 0; $i -lt 7; $i++) {
         
                 $dayHtml += "<div class='section-content' style='text-align: center; margin-top: 10px;'>"
                 $dayHtml += "<h3>$videoTitle</h3>"  # Add video title
-                #$dayHtml += "<video controls poster='$thumbnailUrl' style='max-width: 100%; height: auto; margin-top: 10px;'>"
+                $dayHtml += "<video controls poster='$thumbnailUrl' style='max-width: 25%; height: auto; margin-top: 10px;'>"
                 $dayHtml += "<source src='$videoUrl' type='video/mp4'>"
                 $dayHtml += "Your browser does not support the video tag."
                 $dayHtml += "</video>"
