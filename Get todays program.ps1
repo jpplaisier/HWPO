@@ -109,12 +109,18 @@ $htmlContent = @"
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <title>Weekly Training Schedule</title>
     <style>
+        body, h1, h2, h3, p, div {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 20px;
             background-color: #000;
             color: #fff;
+            max-width: 100%;
         }
         header, footer {
             background-color: #222;
@@ -122,7 +128,7 @@ $htmlContent = @"
             text-align: center;
             padding: 20px 0;
             border-radius: 15px;
-            border: 1px solid #ffd700; /* Golden border */            
+            border: 1px solid #ffd700; /* Golden border */
         }
         header img {
             max-width: 200px;
@@ -144,7 +150,7 @@ $htmlContent = @"
             margin: 10px 0;
             padding: 15px;
             border-radius: 15px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
         .description {
             margin-top: 10px;
@@ -188,6 +194,8 @@ $htmlContent = @"
             color: #000;
             font-weight: bold;
         }
+
+        /* Video Gallery Styling */
         .video-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -205,6 +213,7 @@ $htmlContent = @"
         .thumbnail {
             width: 100%;
             display: block;
+            border-radius: 10px;
         }
         .video-item:hover .play-button {
             opacity: 1;
@@ -226,6 +235,8 @@ $htmlContent = @"
             opacity: 0;
             transition: opacity 0.3s ease;
         }
+        
+        /* Responsive Styling */
         @media (max-width: 600px) {
             .video-gallery {
                 grid-template-columns: 1fr 1fr;
