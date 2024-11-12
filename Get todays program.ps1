@@ -77,19 +77,19 @@ for ($i = 0; $i -lt 7; $i++) {
         # Add section content to HTML
         $dayHtml += "<div class='section'><h2>$sectionTitle</h2><div class='description'>$sectionDescription</div>"
 
-        # Loop through attachments to include videos with thumbnails in a gallery layout
+        # Loop through attachments to include videos with titles
         foreach ($attachment in $sectionDetails.attachments) {
             if ($attachment.type -eq "video" -and $attachment.src) {
                 $videoUrl = $attachment.src
                 $videoTitle = $attachment.title
                 $thumbnailUrl = $attachment.thumb
 
-                # Add video item to HTML with grid style and overlay play button
-                $dayHtml += "<div class='video-item'>"
-                $dayHtml += "<a href='$videoUrl'>"
-                $dayHtml += "<img src='$thumbnailUrl' alt='$videoTitle' class='thumbnail'>"
-                $dayHtml += "<div class='play-button'>▶</div>"
-                $dayHtml += "</a>"
+                $dayHtml += "<div class='section-content' style='text-align: left; margin-top: 10px;'>"
+                $dayHtml += "<h3>$videoTitle</h3>"
+                $dayHtml += "<video controls poster='$thumbnailUrl' preload='none' playsinline muted style='max-width: 100%; height: auto; margin-top: 10px;' loading='lazy'>"
+                $dayHtml += "<source src='$videoUrl' type='video/mp4'>"
+                $dayHtml += "Your browser does not support the video tag."
+                $dayHtml += "</video>"
                 $dayHtml += "</div>"
             }
         }
@@ -109,18 +109,12 @@ $htmlContent = @"
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <title>Weekly Training Schedule</title>
     <style>
-        body, h1, h2, h3, p, div {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 20px;
             background-color: #000;
             color: #fff;
-            max-width: 100%;
         }
         header, footer {
             background-color: #222;
@@ -128,7 +122,7 @@ $htmlContent = @"
             text-align: center;
             padding: 20px 0;
             border-radius: 15px;
-            border: 1px solid #ffd700; /* Golden border */
+            border: 1px solid #ffd700; /* Golden border */            
         }
         header img {
             max-width: 200px;
@@ -150,7 +144,7 @@ $htmlContent = @"
             margin: 10px 0;
             padding: 15px;
             border-radius: 15px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
         .description {
             margin-top: 10px;
@@ -193,55 +187,6 @@ $htmlContent = @"
             background-color: #ffa500;
             color: #000;
             font-weight: bold;
-        }
-
-        /* Video Gallery Styling */
-        .video-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 20px;
-            max-width: 800px;
-            width: 100%;
-            margin-top: 20px;
-        }
-        .video-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .thumbnail {
-            width: 100%;
-            display: block;
-            border-radius: 10px;
-        }
-        .video-item:hover .play-button {
-            opacity: 1;
-        }
-        .play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 50px;
-            height: 50px;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-            font-size: 24px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        /* Responsive Styling */
-        @media (max-width: 600px) {
-            .video-gallery {
-                grid-template-columns: 1fr 1fr;
-                gap: 15px;
-            }
         }
     </style>
 </head>
