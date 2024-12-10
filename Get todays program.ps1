@@ -26,8 +26,8 @@ if (-not $gettoken) {
 # Initialize a variable to hold HTML for the entire week's schedule
 $weekHtml = ""
 
-# Loop through each day of the week (0=Sunday, 1=Monday, ..., 6=Saturday)
-for ($i = 0; $i -lt 7; $i++) {
+# Loop through each day of the week (0=Sunday, 1=Monday, ..., 6=Saturday) (Start with 1 because Sunday is not needed, restday)
+for ($i = 1; $i -lt 7; $i++) {
     # Calculate the date for each day of the week
     $date = (Get-Date).AddDays($i - (Get-Date).DayOfWeek.value__).ToString("yyyy-MM-dd")
     $apiUrl = "https://app.hwpo-training.com/mobile/api/v3/athlete/schedules/$date/plans/3216"
@@ -195,7 +195,6 @@ $htmlContent = @"
         <img src='https://cdn.prod.website-files.com/61c2f086d385db179866da52/61c2ff8084dad62e03fa7111_HWPO-Training-Logo-White.svg' alt='HWPO Logo'>
         <h1>Weekly Training Schedule</h1>
         <div class="day-selector">
-            <button onclick="showDay(0)" id="button-0">Sunday</button>
             <button onclick="showDay(1)" id="button-1">Monday</button>
             <button onclick="showDay(2)" id="button-2">Tuesday</button>
             <button onclick="showDay(3)" id="button-3">Wednesday</button>

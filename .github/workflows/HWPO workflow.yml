@@ -1,9 +1,9 @@
 name: HWPO workflow
 
 on:
-  # Run the workflow every monday at 01:00 UTC (03:00 CEST)
+  # Run the workflow every sunday at 01:00 UTC (03:00 CEST)
   schedule:
-    - cron: "0 1 * * 1"
+    - cron: "0 1 * * 0"
 
   # Allow the workflow to be manually triggered
   workflow_dispatch:
