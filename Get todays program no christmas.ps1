@@ -83,13 +83,32 @@ for ($i = 1; $i -lt 7; $i++) {
                 $videoUrl = $attachment.src
                 $videoTitle = $attachment.title
                 $thumbnailUrl = $attachment.thumb
-
+        
                 $dayHtml += "<div class='section-content' style='text-align: left; margin-top: 10px;'>"
                 $dayHtml += "<h3>$videoTitle</h3>"
-                $dayHtml += "<video controls poster='$thumbnailUrl' preload='none' playsinline muted style='max-width: 100%; height: auto; margin-top: 10px;' loading='lazy'>"
-                $dayHtml += "<source src='$videoUrl' type='video/mp4'>"
-                $dayHtml += "Your browser does not support the video tag."
-                $dayHtml += "</video>"
+        
+                if ($attachment.type -eq "youtube") {
+                    # Extract the video ID and construct the embed URL
+                    if ($videoUrl -match "youtu\.be\/([a-zA-Z0-9_-]+)") {
+                        $videoId = $matches[1]
+                        $embedUrl = "https://www.youtube.com/embed/$videoId"
+                    } elseif ($videoUrl -match "youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)") {
+                        $videoId = $matches[1]
+                        $embedUrl = "https://www.youtube.com/embed/$videoId"
+                    } else {
+                        $embedUrl = $videoUrl # Fallback in case of an unexpected format
+                    }
+                    
+                    # Add iframe for YouTube video
+                    $dayHtml += "<iframe src='$embedUrl' style='max-width: 100%; height: auto; margin-top: 10px;' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen loading='lazy'></iframe>"
+                } else {
+                    # Use video tag for regular videos
+                    $dayHtml += "<video controls poster='$thumbnailUrl' preload='none' playsinline muted style='max-width: 100%; height: auto; margin-top: 10px;' loading='lazy'>"
+                    $dayHtml += "<source src='$videoUrl' type='video/mp4'>"
+                    $dayHtml += "Your browser does not support the video tag."
+                    $dayHtml += "</video>"
+                }
+        
                 $dayHtml += "</div>"
             }
         }
