@@ -113,18 +113,16 @@ $htmlContent = @"
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 20px;
-            background-color: #002b36; /* Night blue background */
-            background-image: url('https://www.transparenttextures.com/patterns/holiday.png'); /* Subtle festive pattern */
+            background-color: #000;
             color: #fff;
         }
         header, footer {
-            background-color: #044a1b; /* Dark green */
-            color: #ffd700; /* Golden */
+            background-color: #222;
+            color: #fff;
             text-align: center;
             padding: 20px 0;
             border-radius: 15px;
-            border: 2px solid #c41e3a; /* Christmas red */
-            position: relative;
+            border: 1px solid #ffd700; /* Golden border */            
         }
         header img {
             max-width: 200px;
@@ -134,27 +132,25 @@ $htmlContent = @"
         h1 {
             margin-top: 10px;
             font-size: 1.8em;
-            text-shadow: 2px 2px 4px #000;
         }
         h2 {
-            color: #cce7d0; /* Frosty green */
+            color: #ccc;
             margin-top: 20px;
-            text-transform: uppercase;
+            text-transform: uppercase; /* Make titles uppercase */
         }
         .section {
-            background: #0a3612; /* Forest green */
+            background: #333;
             color: #fff;
             margin: 10px 0;
             padding: 15px;
             border-radius: 15px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.5);
-            border: 1px solid #ffd700; /* Golden border */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
         .description {
             margin-top: 10px;
         }
         a {
-            color: #ffd700;
+            color: #fff;
             text-decoration: none;
         }
         a:hover {
@@ -174,51 +170,30 @@ $htmlContent = @"
             width: 100%;
             border-radius: 5px;
             margin: 5px 0;
-            border: 1px solid #c41e3a; /* Christmas red */
         }
         .day-selector button {
             margin: 5px;
             padding: 10px;
-            background-color: #c41e3a; /* Christmas red */
+            background-color: #555;
             color: #fff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
         .day-selector button:hover {
-            background-color: #f0544c; /* Lighter red */
+            background-color: #888;
         }
         .highlight {
-            background-color: #ffd700; /* Golden */
+            background-color: #ffa500;
             color: #000;
             font-weight: bold;
-        }
-        /* Add snowflakes for a festive effect */
-        .snowflake {
-            position: absolute;
-            color: #fff;
-            font-size: 1.5em;
-            animation: snow 10s linear infinite;
-        }
-        @keyframes snow {
-            from { transform: translateY(-100vh); }
-            to { transform: translateY(100vh); }
         }
     </style>
 </head>
 <body>
-    <!-- Snowflakes -->
-    <div class="snowflake" style="left: 10%;">❄</div>
-    <div class="snowflake" style="left: 20%;">❅</div>
-    <div class="snowflake" style="left: 30%;">❆</div>
-    <div class="snowflake" style="left: 40%;">❄</div>
-    <div class="snowflake" style="left: 50%;">❅</div>
-    <div class="snowflake" style="left: 60%;">❆</div>
-    <div class="snowflake" style="left: 70%;">❄</div>
-
     <header>
         <img src='https://cdn.prod.website-files.com/61c2f086d385db179866da52/61c2ff8084dad62e03fa7111_HWPO-Training-Logo-White.svg' alt='HWPO Logo'>
-        <h1>🎄 Weekly Training Schedule 🎄</h1>
+        <h1>Weekly Training Schedule</h1>
         <div class="day-selector">
             <button onclick="showDay(1)" id="button-1">Monday</button>
             <button onclick="showDay(2)" id="button-2">Tuesday</button>
@@ -233,7 +208,7 @@ $htmlContent = @"
 
         <!-- Weight Converter Section -->
         <div class="section">
-            <h2>Weight Converter 🎁</h2>
+            <h2>Weight Converter</h2>
             <p>Type a weight in pounds to convert it to kilograms:</p>
             <input id="pounds" type="number" placeholder="Enter weight in lbs" oninput="convertWeight()">
             <p id="kilograms"></p>
@@ -241,7 +216,7 @@ $htmlContent = @"
 
         <!-- Length Converter Section -->
         <div class="section">
-            <h2>Length Converter 🎁</h2>
+            <h2>Length Converter</h2>
             <p>Type a length in feet to convert it to meters:</p>
             <input id="feet" type="number" placeholder="Enter length in feet" oninput="convertLength()">
             <p id="meters"></p>
@@ -249,7 +224,7 @@ $htmlContent = @"
 
         <!-- Percentage Calculator Section -->
         <div class="section">
-            <h2>Percentage Calculator 🎅</h2>
+            <h2>Percentage Calculator</h2>
             <p>Enter the values to calculate a percentage:</p>
             <input id="baseValue" type="number" placeholder="Enter the base value">
             <input id="percentageValue" type="number" placeholder="Enter the percentage" oninput="calculatePercentage()">
@@ -257,7 +232,7 @@ $htmlContent = @"
         </div>
     </main>
     <footer>
-        <p>&copy; 2024 Open Gym Crew | 🎄 Merry Christmas! 🎅</p>
+        <p>&copy; 2024 Open Gym Crew</p>
     </footer>
 
     <script>
