@@ -79,7 +79,7 @@ for ($i = 1; $i -lt 7; $i++) {
 
         # Loop through attachments to include videos with titles
         foreach ($attachment in $sectionDetails.attachments) {
-            if ($attachment.type -eq "video" -and $attachment.src) {
+            if (($attachment.type -eq "video" -or $attachment.type -eq "youtube") -and $attachment.src) {
                 $videoUrl = $attachment.src
                 $videoTitle = $attachment.title
                 $thumbnailUrl = $attachment.thumb
