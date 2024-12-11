@@ -61,22 +61,14 @@ for ($i = 1; $i -lt 7; $i++) {
         
         # Fetch the section details
         $sectionDetails = Invoke-RestMethod -Uri $sectionDetailsUrl -Method GET -Headers $headers
-
-        #######
-        #$sectionDetails | ConvertTo-Json -Depth 10 | Set-Content -Path ".\$date-sectiondetails.json"
-        #######
-
+    
         # Extract section title, description, and available videos
         $sectionTitle = if ($section.title) { $section.title } else { "Section $($section.kind)" }
         $sectionDescription = if ($section.description) { $section.description } else { "No description available." }
-
-        #######
-        #Write-Host "Section Title = $sectionTitle"
-        #######
-
+    
         # Add section content to HTML
         $dayHtml += "<div class='section'><h2>$sectionTitle</h2><div class='description'>$sectionDescription</div>"
-
+    
         # Loop through attachments to include videos with titles
         foreach ($attachment in $sectionDetails.attachments) {
             if (($attachment.type -eq "video" -or $attachment.type -eq "youtube") -and $attachment.src) {
@@ -87,6 +79,7 @@ for ($i = 1; $i -lt 7; $i++) {
                 $dayHtml += "<div class='section-content' style='text-align: left; margin-top: 10px;'>"
                 $dayHtml += "<h3>$videoTitle</h3>"
         
+                # Use iframe for YouTube and video tag for CDN
                 if ($attachment.type -eq "youtube") {
                     # Extract the video ID and construct the embed URL
                     if ($videoUrl -match "youtu\.be\/([a-zA-Z0-9_-]+)") {
@@ -102,8 +95,8 @@ for ($i = 1; $i -lt 7; $i++) {
                     # Add iframe for YouTube video
                     $dayHtml += "<iframe src='$embedUrl' style='max-width: 100%; height: auto; margin-top: 10px;' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen loading='lazy'></iframe>"
                 } else {
-                    # Use video tag for regular videos
-                    $dayHtml += "<video controls poster='$thumbnailUrl' preload='none' playsinline muted style='max-width: 100%; height: auto; margin-top: 10px;' loading='lazy'>"
+                    # Use video tag for CDN-hosted videos
+                    $dayHtml += "<video controls poster='$thumbnailUrl' preload='metadata' playsinline muted style='max-width: 100%; height: auto; margin-top: 10px;' loading='lazy'>"
                     $dayHtml += "<source src='$videoUrl' type='video/mp4'>"
                     $dayHtml += "Your browser does not support the video tag."
                     $dayHtml += "</video>"
@@ -115,7 +108,7 @@ for ($i = 1; $i -lt 7; $i++) {
                         
         $dayHtml += "</div>"  # Close section div
     }
-    $dayHtml += "</div>"  # Close day div
+            $dayHtml += "</div>"  # Close day div
     $weekHtml += $dayHtml
 }
 
@@ -237,6 +230,7 @@ $htmlContent = @"
 
     <header>
         <img src='https://cdn.prod.website-files.com/61c2f086d385db179866da52/61c2ff8084dad62e03fa7111_HWPO-Training-Logo-White.svg' alt='HWPO Logo'>
+        <img src='https://imgcdn.stablediffusionweb.com/2024/12/6/81702f30-7cbb-4e5a-af8a-de103f978eca.jpg' alt='BiSanta'>
         <h1>🎄 Weekly Training Schedule 🎄</h1>
         <div class="day-selector">
             <button onclick="showDay(1)" id="button-1">Monday</button>
