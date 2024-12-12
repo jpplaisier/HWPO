@@ -101,7 +101,7 @@ for ($i = 1; $i -lt 7; $i++) {
                     $dayHtml += "<iframe src='$embedUrl' style='max-width: 100%; height: auto; margin-top: 10px;' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen loading='lazy'></iframe>"
                 } else {
                     # Use video tag for CDN-hosted videos
-                    $dayHtml += "<video controls poster='$thumbnailUrl' preload='none' playsinline muted style='max-width: 100%; height: auto; margin-top: 10px;' loading='lazy'>"
+                    $dayHtml += "<preload='none' muted style='max-width: 100%; height: auto; margin-top: 5px;'>"
                     $dayHtml += "<source src='$videoUrl' type='video/mp4'>"
                     $dayHtml += "Your browser does not support the video tag."
                     $dayHtml += "</video>"
