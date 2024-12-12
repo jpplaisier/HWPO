@@ -216,6 +216,7 @@ $htmlContent = @"
             color: #fff;
             font-size: 1.5em;
             animation: snow 30s linear infinite;
+            z-index: 10; /* Higher value to ensure it appears above the header */
         }
         @keyframes snow {
             from { transform: translateY(-100vh); }
@@ -232,8 +233,8 @@ $htmlContent = @"
     <div class="snowflake" style="left: 50%;">❅</div>
     <div class="snowflake" style="left: 60%;">❆</div>
     <div class="snowflake" style="left: 70%;">❄</div>
-    <div class="snowflake" style="left: 80%;">❄</div>
-    <div class="snowflake" style="left: 90%;">❄</div>        
+    <div class="snowflake" style="left: 80%;">❅</div>
+    <div class="snowflake" style="left: 90%;">❆</div>        
 
     <header>
         <img src='https://cdn.prod.website-files.com/61c2f086d385db179866da52/61c2ff8084dad62e03fa7111_HWPO-Training-Logo-White.svg' alt='HWPO Logo'>
