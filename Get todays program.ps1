@@ -79,7 +79,6 @@ for ($i = 1; $i -lt 7; $i++) {
             if (($attachment.type -eq "video" -or $attachment.type -eq "youtube") -and $attachment.src) {
                 $videoUrl = $attachment.src
                 $videoTitle = $attachment.title
-                $thumbnailUrl = $attachment.thumb
         
                 $dayHtml += "<div class='section-content' style='text-align: left; margin-top: 10px;'>"
                 $dayHtml += "<h3>$videoTitle</h3>"
@@ -101,7 +100,7 @@ for ($i = 1; $i -lt 7; $i++) {
                     $dayHtml += "<iframe src='$embedUrl' style='max-width: 100%; height: auto; margin-top: 10px;' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen loading='lazy'></iframe>"
                 } else {
                     # Use video tag for CDN-hosted videos
-                    $dayHtml += "<preload='none' muted style='max-width: 100%; height: auto; margin-top: 5px;'>"
+                    $dayHtml += "<video preload='none' muted style='max-width: 100%; height: auto; margin-top: 5px;' loading='lazy'>"
                     $dayHtml += "<source src='$videoUrl' type='video/mp4'>"
                     $dayHtml += "Your browser does not support the video tag."
                     $dayHtml += "</video>"
