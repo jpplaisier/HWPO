@@ -130,7 +130,7 @@ $htmlContent = @"
             margin: 0;
             padding: 20px;
             background-color: #002b36; /* Night blue background */
-            background-image: url('https://www.transparenttextures.com/patterns/holiday.png'); /* Subtle festive pattern */
+            background-image: url('https://www.transparenttextures.com/patterns/billie-holiday.png'); /* Subtle festive pattern */
             color: #fff;
         }
         header, footer {
@@ -142,10 +142,15 @@ $htmlContent = @"
             border: 2px solid #c41e3a; /* Christmas red */
             position: relative;
         }
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px; /* Adds space between the two images */
+        }
         header img {
             max-width: 200px;
-            margin: 0 auto;
-            display: block;
+            height: auto;
         }
         h1 {
             margin-top: 10px;
