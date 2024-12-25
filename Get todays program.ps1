@@ -241,7 +241,7 @@ $htmlContent = @"
     <div class="snowflake" style="left: 90%;">❆</div>        
 
     <header>
-        <img src='https://cdn.prod.website-files.com/61c2f086d385db179866da52/61c2ff8084dad62e03fa7111_HWPO-Training-Logo-White.svg' alt='
+        <img src='https://cdn.prod.website-files.com/61c2f086d385db179866da52/61c2ff8084dad62e03fa7111_HWPO-Training-Logo-White.svg' alt='HWPO Logo'>
         <h1>🎄 Weekly Training Schedule 🎄</h1>
         <div class="day-selector">
             <button onclick="showDay(1)" id="button-1">Monday</button>
