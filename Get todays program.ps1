@@ -211,7 +211,8 @@ $htmlContent = @"
 <body>
     <header>
         <img src='https://cdn.prod.website-files.com/61c2f086d385db179866da52/61c2ff8084dad62e03fa7111_HWPO-Training-Logo-White.svg' alt='HWPO Logo'>
-        <h1>Weekly Training Schedule</h1>
+        <img src='https://img.freepik.com/free-photo/sexy-santa-man-isolated-white-background_1303-12802.jpg' alt='BiSanta'>
+        <h1>🎄 Weekly Training Schedule 🎄</h1>
         <div class="day-selector">
             <button onclick="showDay(1)" id="button-1">Monday</button>
             <button onclick="showDay(2)" id="button-2">Tuesday</button>
