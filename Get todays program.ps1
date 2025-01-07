@@ -73,16 +73,19 @@ for ($i = 1; $i -lt 7; $i++) {
         # Add section content to HTML
         $dayHtml += "<div class='section'><h2>$sectionTitle</h2><div class='description'>$sectionDescription</div>"
     
+        # Add a horizontally scrollable video container
+        $dayHtml += "<div class='video-container'>"
+
         # Loop through attachments to include videos with titles
         foreach ($attachment in $sectionDetails.attachments) {
             if (($attachment.type -eq "video" -or $attachment.type -eq "youtube") -and $attachment.src) {
                 $videoUrl = $attachment.src
                 $videoTitle = $attachment.title
-        
-                $dayHtml += "<div class='section-content' style='text-align: left; margin-top: 10px;'>"
+
+                $dayHtml += "<div class='video-item'>"
                 $dayHtml += "<h3>$videoTitle</h3>"
-        
-                # Use iframe for YouTube and video tag for CDN
+
+                # Use iframe for YouTube and video tag for CDN-hosted videos
                 if ($attachment.type -eq "youtube") {
                     # Extract the video ID and construct the embed URL
                     if ($videoUrl -match "youtu\.be\/([a-zA-Z0-9_-]+)") {
@@ -96,7 +99,7 @@ for ($i = 1; $i -lt 7; $i++) {
                     else {
                         $embedUrl = $videoUrl # Fallback in case of an unexpected format
                     }
-                    
+
                     # Add iframe for YouTube video
                     $dayHtml += "<iframe src='$embedUrl' style='max-width: 100%; height: auto; margin-top: 10px;' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen loading='lazy'></iframe>"
                 }
@@ -107,11 +110,12 @@ for ($i = 1; $i -lt 7; $i++) {
                     $dayHtml += "Your browser does not support the video tag."
                     $dayHtml += "</video>"
                 }
-        
-                $dayHtml += "</div>"
+
+                $dayHtml += "</div>"  # Close video-item div
             }
         }
         
+        $dayHtml += "</div>"  # Close video-container div
         $dayHtml += "</div>"  # Close section div
     }
     $dayHtml += "</div>"  # Close day div
@@ -206,6 +210,22 @@ $htmlContent = @"
             background-color: #ffa500;
             color: #000;
             font-weight: bold;
+        }
+        .video-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 20px;
+        }
+        .video-item {
+            min-width: 300px;
+            flex-shrink: 0;
+        }
+        video, iframe {
+            max-width: 100%;
+            height: auto;
+            border: 2px white solid;
+            border-radius: 5px;            
         }
     </style>
 </head>
