@@ -99,7 +99,16 @@
             max-width: 100%;
             height: auto;
             border: 2px white solid;
-            border-radius: 5px;            
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+
+            /* New constraints to prevent large video display */
+            max-height: 300px;
+            max-width: 300px;
+
+            /* Ensures the video maintains its aspect ratio */
+            object-fit: cover;
         }
     </style>
 </head>
