@@ -36,6 +36,9 @@ jobs:
         # Convert the body to JSON format
         $bodyJson = $body | ConvertTo-Json -Depth 3
 
+        # Get the OpenAI API key from the GitHub secrets
+        $OPENAI_API_KEY = "${{ secrets.OPENAI_API_KEY }}"
+
         # Call your PowerShell script with the $bodyJson
         .\"Get todays program.ps1" -BodyJson $bodyJson
       shell: pwsh

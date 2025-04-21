@@ -26,7 +26,6 @@ if (-not $gettoken) {
 # Initialize a variable to hold HTML for the entire week's schedule
 $weekHtml = ""
 
-# Loop through each day of the week (0=Sunday, 1=Monday, ..., 6=Saturday) (Start with 1 because Sunday is not needed, restday)
 for ($i = 1; $i -lt 7; $i++) {
     # Calculate the date for each day of the week
     $date = (Get-Date).AddDays($i - (Get-Date).DayOfWeek.value__).ToString("yyyy-MM-dd")
@@ -38,56 +37,72 @@ for ($i = 1; $i -lt 7; $i++) {
     # Get schedule
     $getschedule = Invoke-RestMethod -Uri $apiUrl -Method GET -Headers $headers
     if (-not $getschedule) { continue }
-    
-    #######
-    #$getschedule | ConvertTo-Json -Depth 10 | Set-Content -Path ".\$date.json"
-    #######
 
-    # Format the date
     $scheduleDate = [datetime]::UnixEpoch.AddSeconds($getschedule.schedule.date).ToString("dd-MM-yyyy")
-    
-    # Prepare sections for each day
     $dayHtml = "<div class='day' id='day-$i' style='display:none;'>"
     $dayHtml += "<h2>$scheduleDate</h2>"
 
+    # === ChatGPT DAILY SUMMARY ===
+    $summaryInput = @()
     foreach ($section in $getschedule.schedule.sections) {
-        # Skip "pre_wod" and "post_wod" sections and non-matching plan_option_id (2905 = 60, 2906 = FLAGSHIP 2.0)
-        if (($section.kind -eq "pre_wod" -or $section.kind -eq "post_wod") -or $section.plan_option_id -eq 2905) { continue }
-        
-        # Retrieve additional section details
+        if (($section.kind -eq "pre_wod" -or $section.kind -eq "post_wod" -or $section.kind -eq "tip" -or $section.title -eq "Bonus" -or $section.title -eq "warm-up" -or $section.title -eq "Current Phase Status") -or $section.plan_option_id -eq 2905) { continue }
         $sectionId = $section.id
         $scheduleId = $getschedule.schedule.id
         $sectionDetailsUrl = "https://app.hwpo-training.com/mobile/api/v3/schedules/$scheduleId/sections/$sectionId"
-        
-        # Fetch the section details
         $sectionDetails = Invoke-RestMethod -Uri $sectionDetailsUrl -Method GET -Headers $headers
-        
-        ####### only for debugging
-        #$sectionDetails | ConvertTo-Json -Depth 10 | Set-Content -Path ".\$date-details.json"
-        #######
+        $title = $section.title
+        $desc = $section.description
+        $summaryInput += "$title`n$desc"
+    }
 
-        # Extract section title, description, and available videos
+    $prompt = "Please summarize the following workout sections for the day in a clear and concise way for an athlete and end with an motivational quote:`n`n" + ($summaryInput -join "`n`n")
+
+    $openaiHeaders = @{
+        "Content-Type"  = "application/json"
+        "Authorization" = "Bearer $OPENAI_API_KEY"
+    }
+
+    $chatBody = @{
+        model = "gpt-3.5-turbo-1106"
+        messages = @(
+            @{ role = "system"; content = "You are a helpful assistant that summarizes CrossFit workout plans from the HWPO training app." }
+            @{ role = "user"; content = $prompt }
+        )
+        temperature = 0.6
+    } | ConvertTo-Json -Depth 10
+
+    try {
+        $response = Invoke-RestMethod -Uri "https://api.openai.com/v1/chat/completions" -Method POST -Headers $openaiHeaders -Body $chatBody
+        $summaryText = $response.choices[0].message.content
+        $summaryHtml = "<div class='section'><h2>Daily Summary powered by ChatGPT</h2><div class='description'>" + ($summaryText -replace "`n", "</div><div class='description'>") + "</div></div>"
+        $dayHtml += $summaryHtml
+    }
+    catch {
+        Write-Warning ("Failed to retrieve summary for day {0}: {1}" -f $i, $_)
+    }
+    # === END DAILY SUMMARY ===
+
+    foreach ($section in $getschedule.schedule.sections) {
+        if (($section.kind -eq "pre_wod" -or $section.kind -eq "post_wod") -or $section.plan_option_id -eq 2905) { continue }
+        
+        $sectionId = $section.id
+        $scheduleId = $getschedule.schedule.id
+        $sectionDetailsUrl = "https://app.hwpo-training.com/mobile/api/v3/schedules/$scheduleId/sections/$sectionId"
+        $sectionDetails = Invoke-RestMethod -Uri $sectionDetailsUrl -Method GET -Headers $headers
+
         $sectionTitle = if ($section.title) { $section.title } else { "Section $($section.kind)" }
         $sectionDescription = if ($section.description) { $section.description } else { "No description available." }
-    
-        # Add section content to HTML
+
         $dayHtml += "<div class='section'><h2>$sectionTitle</h2><div class='description'>$sectionDescription</div>"
-    
-        # Add a horizontally scrollable video container
         $dayHtml += "<div class='video-container'>"
 
-        # Loop through attachments to include videos with titles
         foreach ($attachment in $sectionDetails.attachments) {
             if (($attachment.type -eq "video" -or $attachment.type -eq "youtube") -and $attachment.src) {
                 $videoUrl = $attachment.src
                 $videoTitle = $attachment.title
+                $dayHtml += "<div class='video-item'><h3>$videoTitle</h3>"
 
-                $dayHtml += "<div class='video-item'>"
-                $dayHtml += "<h3>$videoTitle</h3>"
-
-                # Use iframe for YouTube and video tag for CDN-hosted videos
                 if ($attachment.type -eq "youtube") {
-                    # Extract the video ID and construct the embed URL
                     if ($videoUrl -match "youtu\.be\/([a-zA-Z0-9_-]+)") {
                         $videoId = $matches[1]
                         $embedUrl = "https://www.youtube.com/embed/$videoId"
@@ -97,28 +112,26 @@ for ($i = 1; $i -lt 7; $i++) {
                         $embedUrl = "https://www.youtube.com/embed/$videoId"
                     }
                     else {
-                        $embedUrl = $videoUrl # Fallback in case of an unexpected format
+                        $embedUrl = $videoUrl
                     }
 
-                    # Add iframe for YouTube video
                     $dayHtml += "<iframe src='$embedUrl' style='max-width: 100%; height: auto; margin-top: 10px;' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen loading='lazy'></iframe>"
                 }
                 else {
-                    # Use video tag for CDN-hosted videos
                     $dayHtml += "<video controls preload='none' muted style='max-width: 100%; height: auto; margin-top: 5px;' loading='lazy'>"
                     $dayHtml += "<source src='$videoUrl' type='video/mp4'>"
                     $dayHtml += "Your browser does not support the video tag."
                     $dayHtml += "</video>"
                 }
 
-                $dayHtml += "</div>"  # Close video-item div
+                $dayHtml += "</div>"  # Close video-item
             }
         }
-        
-        $dayHtml += "</div>"  # Close video-container div
-        $dayHtml += "</div>"  # Close section div
+
+        $dayHtml += "</div></div>"  # Close video-container and section
     }
-    $dayHtml += "</div>"  # Close day div
+
+    $dayHtml += "</div>"  # Close day
     $weekHtml += $dayHtml
 }
 
@@ -128,11 +141,11 @@ $htmlContent = @"
 <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <title>Weekly Training Schedule</title>
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 20px;
             background-color: #000;
