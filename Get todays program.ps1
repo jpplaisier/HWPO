@@ -55,7 +55,7 @@ for ($i = 1; $i -lt 7; $i++) {
         $summaryInput += "$title`n$desc"
     }
 
-    $prompt = "Please summarize the following workout sections for the day in a clear and concise way for an athlete and end with an motivational quote:`n`n" + ($summaryInput -join "`n`n")
+    $prompt = "Please summarize the following workout sections for the day in a clear and concise way for an athlete, ignore the weights in lbs and end with an motivational quote:`n`n" + ($summaryInput -join "`n`n")
 
     $openaiHeaders = @{
         "Content-Type"  = "application/json"
