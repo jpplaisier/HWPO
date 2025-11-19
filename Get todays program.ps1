@@ -38,6 +38,9 @@ for ($i = 1; $i -lt 7; $i++) {
     $getschedule = Invoke-RestMethod -Uri $apiUrl -Method GET -Headers $headers
     if (-not $getschedule) { continue }
 
+    # Filter sections based on plan_option_id and kind
+    $filteredschedule = $getschedule.schedule.sections | Where-Object { $_.plan_option_id -eq 2906 -and $_.kind -ne 'pre_wod' -and $_.kind -ne 'post_wod' }
+
     $scheduleDate = [datetime]::UnixEpoch.AddSeconds($getschedule.schedule.date).ToString("dd-MM-yyyy")
     $dayHtml = "<div class='day' id='day-$i' style='display:none;'>"
     $dayHtml += "<h2>$scheduleDate</h2>"
@@ -45,7 +48,7 @@ for ($i = 1; $i -lt 7; $i++) {
     # === ChatGPT DAILY SUMMARY ===
     $summaryInput = @()
     foreach ($section in $getschedule.schedule.sections) {
-        if (($section.kind -eq "pre_wod" -or $section.kind -eq "post_wod" -or $section.kind -eq "tip" -or $section.title -eq "Bonus" -or $section.title -eq "warm-up" -or $section.title -eq "Current Phase Status") -or $section.plan_option_id -eq 2905) { continue }
+        if (($section.kind -eq "tip" -or $section.title -eq "Bonus" -or $section.title -eq "warm-up" -or $section.title -eq "Current Phase Status")) { continue }
         $sectionId = $section.id
         $scheduleId = $getschedule.schedule.id
         $sectionDetailsUrl = "https://app.hwpo-training.com/mobile/api/v3/schedules/$scheduleId/sections/$sectionId"
@@ -82,9 +85,7 @@ for ($i = 1; $i -lt 7; $i++) {
     }
     # === END DAILY SUMMARY ===
 
-    foreach ($section in $getschedule.schedule.sections) {
-        if (($section.kind -eq "pre_wod" -or $section.kind -eq "post_wod") -or $section.plan_option_id -eq 2905) { continue }
-        
+    foreach ($section in $filteredschedule) {
         $sectionId = $section.id
         $scheduleId = $getschedule.schedule.id
         $sectionDetailsUrl = "https://app.hwpo-training.com/mobile/api/v3/schedules/$scheduleId/sections/$sectionId"
